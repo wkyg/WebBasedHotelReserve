@@ -67,7 +67,7 @@
                 $tempPass = $row["USER_PASS"];
                 if ($user == $tempUser && $pass == $tempPass){
                     echo "yes User". "</br>";
-                    //header("Location: redirect.html");
+                    header("Location: loginSuccess.html");
                     exit();
                 }else{
                     echo "no". "</br>";
@@ -81,7 +81,7 @@
                 $tempPass = $row["HOTELIER_PASS"];
                 if ($user == $tempUser && $pass == $tempPass){
                     echo "yes Hotelier". "</br>";
-                    header("Location: redirect.html");
+                    header("Location: loginSuccess.html");
                     exit();
                 }else{
                     echo "no". "</br>";
@@ -95,7 +95,7 @@
                 $tempPass = $row["ADMIN_PASS"];
                 if ($user == $tempUser && $pass == $tempPass){
                     echo "yes Admin". "</br>";
-                    header("Location: redirect.html");
+                    header("Location: loginSuccess.html");
                     exit();
                 }else{
                     echo "no". "</br>";

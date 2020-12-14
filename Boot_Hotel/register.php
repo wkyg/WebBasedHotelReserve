@@ -27,7 +27,8 @@
                 $tempMail = $row["USER_EMAIL"];
                 //echo $tempUser."--database</br>";
                 //echo $tempMail."--database</br>";
-                if ($user == $tempUser && $mail == $tempMail){
+                if (($user == $tempUser && $mail == $tempMail) || ($user != $tempUser && $mail == $tempMail)
+                || ($user == $tempUser && $mail != $tempMail)){
                     echo "Existing User already exist in our database". "</br>";
                     $bool = false;
                 break;
@@ -41,6 +42,8 @@
         if($bool == true){
             if(mysqli_query($conn, $sql)){
                 echo "Register success". "</br>";
+                header("Location: registerSuccess.html");
+                exit();
             }else{
                 echo "ERROR";
             } 
@@ -49,6 +52,5 @@
         die("FATAL ERROR");
     }
     
-
     $conn->close();
 ?>
