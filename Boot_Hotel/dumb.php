@@ -1,10 +1,15 @@
 <?php
-    $haha = 1;
-    $hehe = 0;
+    $conn = mysqli_connect("localhost", "root", "", "hotel");
 
-    if(($haha == 1 && $hehe == 1) || ($haha == 1 && $hehe == 0)){
-        echo "Yes";
+    if($conn){
+        $sql = "SELECT HOTEL_IMG FROM HOTEL WHERE HOTEL_ID = 1";
+        $result = $conn->query($sql);
+        while($row = $result->fetch_assoc()){ ?> 
+            <img src="data:image/jpg;charset=utf8;base64,<?php echo base64_encode($row['HOTEL_IMG']); ?>" /> 
+        <?php }
     }else{
-        echo "No";
+        die("FATAL ERROR");
     }
+    
+    $conn->close();
 ?>
