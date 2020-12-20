@@ -1,0 +1,156 @@
+<!doctype html>
+<html lang="en">
+    <head>
+        <!-- Required meta tags -->
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
+        <!-- Bootstrap CSS -->
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/css/bootstrap.min.css" 
+        integrity="sha384-TX8t27EcRE3e/ihU7zmQxVncDAy5uIKz4rEkgIXeMed4M0jlfIDPvg6uqKI2xXr2" crossorigin="anonymous">
+        <!--Local CSS-->
+        <link rel="stylesheet" type=text/css href="css/resultStyle.css">
+        <title>Hotel Reservation</title>
+    </head>
+    <body>
+        <header class="container">
+            <div class="container">
+                <!--Navigation-->
+                <nav class="navbar navbar-expand-md navbar-dark bg-transparent">
+                    <a class="navbar-brand" href="index.html"><img src="images/logo.png" width="100" height="100"alt="logo"></a>
+                    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent">
+                        <span class="navbar-toggler-icon"></span>
+                    </button>
+                    
+                    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                        <ul class="navbar-nav ml-auto">
+                            <li class="nav-item active">
+                                <a class="nav-link" href="login.html">Login <span class="sr-only">(current)</span></a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="register.html">Register</a>
+                            </li>
+                            <li class="nav-item dropdown">
+                                <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                MYR
+                                </a>
+                                <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                                    <a class="dropdown-item" href="#">SGD</a>
+                                    <a class="dropdown-item" href="#">THB</a>
+                                    <a class="dropdown-item" href="#">USD</a>
+                                </div>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="about.html">About</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="contact.html">Contact</a>
+                            </li>
+                        </ul>
+                    </div>
+                </nav>
+            </div>
+        </header>
+        <main class="container text-center">
+            <div class="container">
+                <!--Form box-->
+                <!--Search box-->
+                <div class="row">
+                    <!--
+                    <div class="col-sm bg-transparent">
+                        <div class="form-group">
+                            <input type="text" class="form-control form-control-lg" id="searchForm" placeholder="Location">
+                        </div>
+                    </div>-->
+                    <div class="col-sm">
+                        <div class="form-group">
+                            <div class="input-group">
+                                <input type="text" class="form-control form-control-lg" id="searchForm" placeholder="Location">
+                                <input type="text" class="form-control form-control-lg" placeholder="Date-in" onfocus="(this.type='date')" onblur="(this.type='text')">
+                                <input type="text" class="form-control form-control-lg" placeholder="Date-out" onfocus="(this.type='date')" onblur="(this.type='text')">
+                                <button class="btn btn-light dropdown-toggle" type="button" data-toggle="dropdown" aria-expanded="false">More option</button>
+                                <ul class="dropdown-menu dropdown-menu-end">
+                                    <li>
+                                        <div class="col-sm">
+                                            <div class="form-group">
+                                                <div class="input-group">
+                                                    <input type="number" class="form-control form-control-lg" placeholder="Adults" id="stepper_0" name="adults" step="1" min="0">
+                                                    <input type="number" class="form-control form-control-lg" placeholder="Children" id="stepper_1" name="children" step="1" min="0">
+                                                    <input type="number" class="form-control form-control-lg" placeholder="Room" id="stepper_2" name="room" step="1" min="0">     
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </li>
+                                    <li><hr class="dropdown-divider"></li>
+                                    <li>
+                                        <div class="col-sm">
+                                            <h5>Personality & Mood</h5>
+                                        </div>
+                                        <div class="col-sm pb-3">
+                                            <button type="button" class="btn btn-outline-primary">Primary</button>
+                                            <button type="button" class="btn btn-outline-primary">Primary</button>
+                                            <button type="button" class="btn btn-outline-primary">Primary</button>
+                                            <button type="button" class="btn btn-outline-primary">Primary</button>
+                                        </div>
+                                        <div class="col-sm pb-3">
+                                            <button type="button" class="btn btn-outline-primary">Primary</button>
+                                            <button type="button" class="btn btn-outline-primary">Primary</button>
+                                            <button type="button" class="btn btn-outline-primary">Primary</button>
+                                            <button type="button" class="btn btn-outline-primary">Primary</button>
+                                        </div>
+                                        <div class="col-sm">
+                                            <button type="button" class="btn btn-outline-primary">Primary</button>
+                                            <button type="button" class="btn btn-outline-primary">Primary</button>
+                                            <button type="button" class="btn btn-outline-primary">Primary</button>
+                                            <button type="button" class="btn btn-outline-primary">Primary</button>
+                                        </div>
+                                    </li>
+                                </ul>
+                                <button type="button" class="btn btn-light btn-lg">
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-search" viewBox="0 0 16 16">
+                                        <path fill-rule="evenodd" d="M10.442 10.442a1 1 0 0 1 1.415 0l3.85 3.85a1 1 0 0 1-1.414 1.415l-3.85-3.85a1 1 0 0 1 0-1.415z"/>
+                                        <path fill-rule="evenodd" d="M6.5 12a5.5 5.5 0 1 0 0-11 5.5 5.5 0 0 0 0 11zM13 6.5a6.5 6.5 0 1 1-13 0 6.5 6.5 0 0 1 13 0z"/>
+                                    </svg>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="container">
+                <div class="jumbotron">
+                    test
+                </div>
+                <div class="jumbotron">
+                    test
+                </div>
+                <div class="jumbotron">
+                    test
+                </div>
+                <div class="jumbotron">
+                    test
+                </div>
+                <div class="jumbotron">
+                    test
+                </div>
+                <div class="jumbotron">
+                    test
+                </div>
+                <div class="jumbotron">
+                    test
+                </div>
+                <div class="jumbotron">
+                    test
+                </div>
+                <div class="jumbotron">
+                    test
+                </div>
+                <div class="jumbotron">
+                    test
+                </div>
+            </div>
+        </main>
+        <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+        <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js" integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN" crossorigin="anonymous"></script>
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/js/bootstrap.min.js" integrity="sha384-w1Q4orYjBQndcko6MimVbzY0tgp4pWB4lZ7lr30WKz0vr/aWKhXdBNmNb5D92v7s" crossorigin="anonymous"></script>
+    </body>
+</html>
