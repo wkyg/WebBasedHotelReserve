@@ -124,64 +124,36 @@
                     </div>
                 </div>
             </div>
-            <div class="container">
-                <div class="card mb-3">
-                    <div class="row g-0">
-                      <div class="col-md-4">
-                        <img src="images/hotel_1.jpg" alt="...">
-                      </div>
-                      <div class="col-md-8">
-                        <div class="card-body">
-                          <h5 class="card-title">Card title</h5>
-                          <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
-                          <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
-                        </div>
-                      </div>
-                    </div>
-                </div>
-                <div class="card mb-3">
-                    <div class="row g-0">
-                      <div class="col-md-4">
-                        <img src="images/hotel_1.jpg" alt="...">
-                      </div>
-                      <div class="col-md-8">
-                        <div class="card-body">
-                          <h5 class="card-title">Card title</h5>
-                          <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
-                          <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
-                        </div>
-                      </div>
-                    </div>
-                </div>
-                <div class="card mb-3">
-                    <div class="row g-0">
-                      <div class="col-md-4">
-                        <img src="images/hotel_1.jpg" alt="...">
-                      </div>
-                      <div class="col-md-8">
-                        <div class="card-body">
-                          <h5 class="card-title">Card title</h5>
-                          <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
-                          <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
-                        </div>
-                      </div>
-                    </div>
-                </div>
-                <div class="card mb-3">
-                    <div class="row g-0">
-                      <div class="col-md-4">
-                        <img src="images/hotel_1.jpg" alt="...">
-                      </div>
-                      <div class="col-md-8">
-                        <div class="card-body">
-                          <h5 class="card-title">Card title</h5>
-                          <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
-                          <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
-                        </div>
-                      </div>
-                    </div>
-                </div>
-            </div>
+            <?php 
+                $img = 'IMG_';
+                $conn = mysqli_connect("localhost", "root", "", "hotel");
+            
+                if($conn){
+                    $sql = "SELECT * FROM HOTEL_IMG";
+                    $sql_2 = "SELECT * FROM HOTEL";
+                    $result = $conn->query($sql);
+                    $result_2 = $conn->query($sql_2);
+                    while($row = $result_2->fetch_assoc()){
+                        $name = $row['HOTEL_NAME'];
+                        $location = $row['HOTEL_LOC'];
+                        $img = $row['HOTEL_IMG']?>
+                        <div class="container">
+                            <div class="card mb-3">
+                            <img src="data:image/jpg;charset=utf8;base64,<?php echo base64_encode($img); ?>" />
+                                <div class="card-body text-left">
+                                    <h5 class="card-title"><?php echo $name; ?></h5>
+                                    <p class="card-text"><?php echo $location; ?></p>
+                                    <a href="#" class="btn btn-primary">More details</a>
+                                </div>
+                            </div>
+                        </div><?php
+                    }
+                }else{
+                    die("FATAL ERROR");
+                }
+                
+                $conn->close();
+            ?>
         </main>
         <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
         <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js" integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN" crossorigin="anonymous"></script>
