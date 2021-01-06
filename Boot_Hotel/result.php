@@ -1,3 +1,12 @@
+<?php
+    session_start();
+    $search = $_SESSION["search_result"];
+    $datein = $_SESSION["datein_result"];
+    $dateout = $_SESSION["dateout_result"];
+    $adults = $_SESSION["adults_result"];
+    $children = $_SESSION["children_result"];
+    $room = $_SESSION["room_result"];
+?>
 <!doctype html>
 <html lang="en">
     <head>
@@ -67,28 +76,28 @@
                     </div>-->
                     <div class="col-sm">
                         <div class="form-group">
-                            <form action="result.php" method="GET">
+                            <form action="search.php" method="GET">
                                 <div class="input-group">
-                                    <input type="text" class="form-control form-control-lg" id="searchForm" placeholder="Location">
-                                    <input type="text" class="form-control form-control-lg" placeholder="Date-in" onfocus="(this.type='date')" onblur="(this.type='text')">
-                                    <input type="text" class="form-control form-control-lg" placeholder="Date-out" onfocus="(this.type='date')" onblur="(this.type='text')">
-                                    <button class="btn btn-light dropdown-toggle" type="button" data-toggle="dropdown" aria-expanded="false">More option</button>
+                                    <input type="text" class="form-control form-control-lg rounded-0" name="search" id="searchForm" placeholder="Location">
+                                    <input type="text" class="form-control form-control-lg rounded-0" name="datein" placeholder="Date-in" onfocus="(this.type='date')" onblur="(this.type='text')">
+                                    <input type="text" class="form-control form-control-lg rounded-0" name="dateout" placeholder="Date-out" onfocus="(this.type='date')" onblur="(this.type='text')">
+                                    <button class="btn btn-light dropdown-toggle rounded-0 rounded-0" type="button" data-toggle="dropdown" aria-expanded="false">More option</button>
                                     <ul class="dropdown-menu dropdown-menu-end">
                                         <li>
                                             <div class="col-sm">
                                                 <div class="form-group">
                                                     <div class="input-group">
-                                                        <input type="number" class="form-control form-control-lg" placeholder="Adults" id="stepper_0" name="adults" step="1" min="0">
+                                                        <input type="number" class="form-control form-control-lg" name="adults" placeholder="Adults" id="stepper_0" name="adults" step="1" min="0">
                                                     </div>                                                    
                                                 </div>
                                                 <div class="form-group">                                                 
                                                     <div class="input-group">
-                                                        <input type="number" class="form-control form-control-lg" placeholder="Children" id="stepper_1" name="children" step="1" min="0">
+                                                        <input type="number" class="form-control form-control-lg" name="children" placeholder="Children" id="stepper_1" name="children" step="1" min="0">
                                                     </div>
                                                 </div>
                                                 <div class="form-group">
                                                     <div class="input-group">
-                                                        <input type="number" class="form-control form-control-lg" placeholder="Room" id="stepper_2" name="room" step="1" min="0">     
+                                                        <input type="number" class="form-control form-control-lg" name="room" placeholder="Room" id="stepper_2" name="room" step="1" min="0">     
                                                     </div>
                                                 </div>
                                             </div>
@@ -118,12 +127,14 @@
                                             </div>
                                         </li>
                                     </ul>
-                                    <button type="submit" class="btn btn-light btn-lg">
-                                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-search" viewBox="0 0 16 16">
-                                            <path fill-rule="evenodd" d="M10.442 10.442a1 1 0 0 1 1.415 0l3.85 3.85a1 1 0 0 1-1.414 1.415l-3.85-3.85a1 1 0 0 1 0-1.415z"/>
-                                            <path fill-rule="evenodd" d="M6.5 12a5.5 5.5 0 1 0 0-11 5.5 5.5 0 0 0 0 11zM13 6.5a6.5 6.5 0 1 1-13 0 6.5 6.5 0 0 1 13 0z"/>
-                                        </svg>
-                                    </button>
+                                    <div class="btn-group" role="group" aria-label="Basic example">
+                                        <button type="submit" class="btn btn-light btn-lg rounded-0">
+                                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-search" viewBox="0 0 16 16">
+                                                <path fill-rule="evenodd" d="M10.442 10.442a1 1 0 0 1 1.415 0l3.85 3.85a1 1 0 0 1-1.414 1.415l-3.85-3.85a1 1 0 0 1 0-1.415z"/>
+                                                <path fill-rule="evenodd" d="M6.5 12a5.5 5.5 0 1 0 0-11 5.5 5.5 0 0 0 0 11zM13 6.5a6.5 6.5 0 1 1-13 0 6.5 6.5 0 0 1 13 0z"/>
+                                            </svg>
+                                        </button>
+                                    </div>
                                 </div>
                             </form>
                         </div>
@@ -131,15 +142,15 @@
                 </div>
             </div>
             <?php   
-                $search = $_GET["search"];
-                $date_in = $_GET["datein"];
-                $date_out = $_GET["dateout"];
-
-                //test output
-                //echo $search."</br>";
-                //echo $date_in."</br>";
-                //echo $date_out."</br>";
-            
+                /*----DEBUG OUTPUTS---*/
+                /*
+                echo $search."</br>";
+                echo $datein."</br>";
+                echo $dateout."</br>";
+                echo $adults."</br>";
+                echo $children."</br>";
+                echo $room."</br>";
+                */
                 $img = 'IMG_';
                 $conn = mysqli_connect("localhost", "root", "", "hotel");
             
