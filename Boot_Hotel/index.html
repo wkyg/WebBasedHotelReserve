@@ -55,7 +55,7 @@
             </div>
         </header>
         <main class="container text-center">
-            <form action="search.php" method="POST">
+            <form action="result.php" method="GET">
                 <div class="container">
                     <!--Title-->
                     <div class="row">
@@ -72,7 +72,7 @@
                         <div class="col-lg">
                             <form>
                                 <div class="form-group">
-                                    <input type="text" class="form-control form-control-lg" id="searchForm" placeholder="Enter your a location or hotel name..." required>
+                                    <input type="text" class="form-control form-control-lg" id="searchForm" name="search" placeholder="Enter your a location or hotel name..." required>
                                 </div>
                             </form>
                         </div>
@@ -82,20 +82,13 @@
                         <div class="col-sm">
                             <div class="form-group">
                                 <!--<input type="date" class="form-control form-control-lg" placeholder="Date-in">-->
-                                <input type="text" class="form-control form-control-lg" placeholder="Check in date" onfocus="(this.type='date')" onblur="(this.type='text')" required>
+                                <input type="text" class="form-control form-control-lg" name="datein" placeholder="Check in date" onfocus="(this.type='date')" onblur="(this.type='text')" required>
                             </div>
                         </div>
-                        <!--
-                        <div class="col-sm">
-                            <div class="form-group">
-                                <h2 class="text-white">Date in | Date out</h6>
-                            </div>
-                        </div>
-                        -->
                         <div class="col-sm">
                             <div class="form-group">
                                 <!--<input type="date" class="form-control form-control-lg">-->
-                                <input type="text" class="form-control form-control-lg" placeholder="Check out date" onfocus="(this.type='date')" onblur="(this.type='text')" required>
+                                <input type="text" class="form-control form-control-lg" name="dateout" placeholder="Check out date" onfocus="(this.type='date')" onblur="(this.type='text')" required>
                             </div>
                         </div>
                     </div>

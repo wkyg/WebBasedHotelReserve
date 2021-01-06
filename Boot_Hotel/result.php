@@ -67,74 +67,85 @@
                     </div>-->
                     <div class="col-sm">
                         <div class="form-group">
-                            <div class="input-group">
-                                <input type="text" class="form-control form-control-lg" id="searchForm" placeholder="Location">
-                                <input type="text" class="form-control form-control-lg" placeholder="Date-in" onfocus="(this.type='date')" onblur="(this.type='text')">
-                                <input type="text" class="form-control form-control-lg" placeholder="Date-out" onfocus="(this.type='date')" onblur="(this.type='text')">
-                                <button class="btn btn-light dropdown-toggle" type="button" data-toggle="dropdown" aria-expanded="false">More option</button>
-                                <ul class="dropdown-menu dropdown-menu-end">
-                                    <li>
-                                        <div class="col-sm">
-                                            <div class="form-group">
-                                                <div class="input-group">
-                                                    <input type="number" class="form-control form-control-lg" placeholder="Adults" id="stepper_0" name="adults" step="1" min="0">
-                                                </div>                                                    
-                                            </div>
-                                            <div class="form-group">                                                 
-                                                <div class="input-group">
-                                                    <input type="number" class="form-control form-control-lg" placeholder="Children" id="stepper_1" name="children" step="1" min="0">
+                            <form action="result.php" method="GET">
+                                <div class="input-group">
+                                    <input type="text" class="form-control form-control-lg" id="searchForm" placeholder="Location">
+                                    <input type="text" class="form-control form-control-lg" placeholder="Date-in" onfocus="(this.type='date')" onblur="(this.type='text')">
+                                    <input type="text" class="form-control form-control-lg" placeholder="Date-out" onfocus="(this.type='date')" onblur="(this.type='text')">
+                                    <button class="btn btn-light dropdown-toggle" type="button" data-toggle="dropdown" aria-expanded="false">More option</button>
+                                    <ul class="dropdown-menu dropdown-menu-end">
+                                        <li>
+                                            <div class="col-sm">
+                                                <div class="form-group">
+                                                    <div class="input-group">
+                                                        <input type="number" class="form-control form-control-lg" placeholder="Adults" id="stepper_0" name="adults" step="1" min="0">
+                                                    </div>                                                    
+                                                </div>
+                                                <div class="form-group">                                                 
+                                                    <div class="input-group">
+                                                        <input type="number" class="form-control form-control-lg" placeholder="Children" id="stepper_1" name="children" step="1" min="0">
+                                                    </div>
+                                                </div>
+                                                <div class="form-group">
+                                                    <div class="input-group">
+                                                        <input type="number" class="form-control form-control-lg" placeholder="Room" id="stepper_2" name="room" step="1" min="0">     
+                                                    </div>
                                                 </div>
                                             </div>
-                                            <div class="form-group">
-                                                <div class="input-group">
-                                                    <input type="number" class="form-control form-control-lg" placeholder="Room" id="stepper_2" name="room" step="1" min="0">     
-                                                </div>
+                                        </li>
+                                        <li><hr class="dropdown-divider"></li>
+                                        <li>
+                                            <div class="col-sm">
+                                                <h5>Personality & Mood</h5>
                                             </div>
-                                        </div>
-                                    </li>
-                                    <li><hr class="dropdown-divider"></li>
-                                    <li>
-                                        <div class="col-sm">
-                                            <h5>Personality & Mood</h5>
-                                        </div>
-                                        <div class="col-sm pb-3">
-                                            <button type="button" class="btn btn-outline-primary">Primary</button>
-                                            <button type="button" class="btn btn-outline-primary">Primary</button>
-                                            <button type="button" class="btn btn-outline-primary">Primary</button>
-                                            <button type="button" class="btn btn-outline-primary">Primary</button>
-                                        </div>
-                                        <div class="col-sm pb-3">
-                                            <button type="button" class="btn btn-outline-primary">Primary</button>
-                                            <button type="button" class="btn btn-outline-primary">Primary</button>
-                                            <button type="button" class="btn btn-outline-primary">Primary</button>
-                                            <button type="button" class="btn btn-outline-primary">Primary</button>
-                                        </div>
-                                        <div class="col-sm">
-                                            <button type="button" class="btn btn-outline-primary">Primary</button>
-                                            <button type="button" class="btn btn-outline-primary">Primary</button>
-                                            <button type="button" class="btn btn-outline-primary">Primary</button>
-                                            <button type="button" class="btn btn-outline-primary">Primary</button>
-                                        </div>
-                                    </li>
-                                </ul>
-                                <button type="button" class="btn btn-light btn-lg">
-                                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-search" viewBox="0 0 16 16">
-                                        <path fill-rule="evenodd" d="M10.442 10.442a1 1 0 0 1 1.415 0l3.85 3.85a1 1 0 0 1-1.414 1.415l-3.85-3.85a1 1 0 0 1 0-1.415z"/>
-                                        <path fill-rule="evenodd" d="M6.5 12a5.5 5.5 0 1 0 0-11 5.5 5.5 0 0 0 0 11zM13 6.5a6.5 6.5 0 1 1-13 0 6.5 6.5 0 0 1 13 0z"/>
-                                    </svg>
-                                </button>
-                            </div>
+                                            <div class="col-sm pb-3">
+                                                <button type="button" class="btn btn-outline-primary">Primary</button>
+                                                <button type="button" class="btn btn-outline-primary">Primary</button>
+                                                <button type="button" class="btn btn-outline-primary">Primary</button>
+                                                <button type="button" class="btn btn-outline-primary">Primary</button>
+                                            </div>
+                                            <div class="col-sm pb-3">
+                                                <button type="button" class="btn btn-outline-primary">Primary</button>
+                                                <button type="button" class="btn btn-outline-primary">Primary</button>
+                                                <button type="button" class="btn btn-outline-primary">Primary</button>
+                                                <button type="button" class="btn btn-outline-primary">Primary</button>
+                                            </div>
+                                            <div class="col-sm">
+                                                <button type="button" class="btn btn-outline-primary">Primary</button>
+                                                <button type="button" class="btn btn-outline-primary">Primary</button>
+                                                <button type="button" class="btn btn-outline-primary">Primary</button>
+                                                <button type="button" class="btn btn-outline-primary">Primary</button>
+                                            </div>
+                                        </li>
+                                    </ul>
+                                    <button type="submit" class="btn btn-light btn-lg">
+                                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-search" viewBox="0 0 16 16">
+                                            <path fill-rule="evenodd" d="M10.442 10.442a1 1 0 0 1 1.415 0l3.85 3.85a1 1 0 0 1-1.414 1.415l-3.85-3.85a1 1 0 0 1 0-1.415z"/>
+                                            <path fill-rule="evenodd" d="M6.5 12a5.5 5.5 0 1 0 0-11 5.5 5.5 0 0 0 0 11zM13 6.5a6.5 6.5 0 1 1-13 0 6.5 6.5 0 0 1 13 0z"/>
+                                        </svg>
+                                    </button>
+                                </div>
+                            </form>
                         </div>
                     </div>
                 </div>
             </div>
-            <?php 
+            <?php   
+                $search = $_GET["search"];
+                $date_in = $_GET["datein"];
+                $date_out = $_GET["dateout"];
+
+                //test output
+                //echo $search."</br>";
+                //echo $date_in."</br>";
+                //echo $date_out."</br>";
+            
                 $img = 'IMG_';
                 $conn = mysqli_connect("localhost", "root", "", "hotel");
             
                 if($conn){
                     $sql = "SELECT * FROM HOTEL_IMG";
-                    $sql_2 = "SELECT * FROM HOTEL";
+                    $sql_2 = "SELECT * FROM HOTEL WHERE HOTEL_NAME LIKE '%$search%' OR HOTEL_LOC LIKE '%$search%'";
                     $result = $conn->query($sql);
                     $result_2 = $conn->query($sql_2);
                     while($row = $result_2->fetch_assoc()){
