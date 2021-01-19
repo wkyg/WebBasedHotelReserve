@@ -15,9 +15,11 @@
     //echo $pass."</br>";
     //echo "-----------------</br>";
 
+    $cryptPass = password_hash("$pass", PASSWORD_DEFAULT);
+    //echo $cryptPass;
     
     if($conn){
-        $sql = "INSERT INTO USER (USER_ID, USER_NAME, USER_PASS, USER_EMAIL, ACC_TYPE, ACC_STAT, ADMIN_ID) VALUES ('', '$user', '$pass', '$mail', '1', '0', '1')";
+        $sql = "INSERT INTO USER (USER_ID, USER_NAME, USER_PASS, USER_EMAIL, ACC_TYPE, ACC_STAT, ADMIN_ID) VALUES ('', '$user', '$cryptPass', '$mail', '1', '0', '1')";
         $sql_2 = "SELECT USER_NAME, USER_EMAIL FROM USER";
         $result = $conn->query($sql_2);
 

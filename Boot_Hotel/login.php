@@ -3,6 +3,7 @@
     $pass = $_POST["pass"];
     $tempUser = "";
     $tempPass = "";
+    $cryptFlag = FALSE;
 
 
     $conn = mysqli_connect("localhost", "root", "", "hotel");
@@ -65,7 +66,14 @@
             while($row = $result->fetch_assoc()) {
                 $tempUser = $row["USER_NAME"];
                 $tempPass = $row["USER_PASS"];
-                if ($user == $tempUser && $pass == $tempPass){
+                if (password_verify("$pass", "$tempPass")){
+                    //echo "yes"."</br>";
+                    $cryptFlag = TRUE;
+                }else{
+                    //echo "no"."</br>";
+                    $cryptFlag = FALSE;
+                }
+                if ($user == $tempUser && $cryptFlag == TRUE){
                     echo "yes User". "</br>";
                     header("Location: loginSuccess.html");
                     exit();
@@ -79,7 +87,7 @@
             while($row = $result_2->fetch_assoc()) {
                 $tempUser = $row["HOTELIER_NAME"];
                 $tempPass = $row["HOTELIER_PASS"];
-                if ($user == $tempUser && $pass == $tempPass){
+                if ($user == $tempUser && $cryptFlag == TRUE){
                     echo "yes Hotelier". "</br>";
                     header("Location: loginSuccess.html");
                     exit();
@@ -93,7 +101,7 @@
             while($row = $result_3->fetch_assoc()) {
                 $tempUser = $row["ADMIN_NAME"];
                 $tempPass = $row["ADMIN_PASS"];
-                if ($user == $tempUser && $pass == $tempPass){
+                if ($user == $tempUser && $cryptFlag == TRUE){
                     echo "yes Admin". "</br>";
                     header("Location: loginSuccess.html");
                     exit();
