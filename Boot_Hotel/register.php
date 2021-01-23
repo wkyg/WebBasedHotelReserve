@@ -6,6 +6,7 @@
     $tempUser = "";
     $tempMail = "";
     $bool = false;
+    $cont = "Registration Success";
 
     $conn = mysqli_connect("localhost", "root", "", "hotel");
 
@@ -44,8 +45,14 @@
         if($bool == true){
             if(mysqli_query($conn, $sql)){
                 echo "Register success". "</br>";
-                header("Location: registerSuccess.html");
-                exit();
+                //$adminMailChk = mail("hotelfypp@gmail.com", "User_Enquiry", $cont, "From: hotelfypp@gmail.com");
+                $custMailChk = mail($mail, "Thank you for your registration", "hahahahahhhahaha", "From: hotelfypp@gmail.com");
+                if($custMailChk){
+                    header("Location: registerSuccess.html");
+                    exit();
+                }else{
+                    echo "Conformation failed";
+                }
             }else{
                 echo "ERROR";
             } 
