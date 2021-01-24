@@ -76,7 +76,7 @@
                     </div>-->
                     <div class="col-sm">
                         <div class="form-group">
-                            <form action="search.php" method="GET">
+                            <form action="data.php?data=<?=$id?>" method="GET">
                                 <div class="input-group">
                                     <input type="text" class="form-control form-control-lg rounded-0" name="search" id="searchForm" placeholder="Location">
                                     <input type="text" class="form-control form-control-lg rounded-0" name="datein" placeholder="Date-in" onfocus="(this.type='date')" onblur="(this.type='text')">
@@ -183,8 +183,7 @@
                     die("FATAL ERROR");
                 }
                 
-                $_POST["hotel_id"] = $id;
-
+                print_r($_SESSION);
                 $conn->close();
             ?>
         </main>

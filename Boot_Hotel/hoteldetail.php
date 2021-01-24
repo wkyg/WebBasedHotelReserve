@@ -1,6 +1,7 @@
 <?php
-    //session_start();
-    $id = $_POST["hotel_id"];
+    include "search.php";
+    session_start();
+    $hot_id = $_GET["$id"];
 ?>
 <!doctype html>
 <html lang="en">
@@ -89,7 +90,8 @@
                     <span class="sr-only">Next</span>
                 </a>
                 <?php
-                    echo $id;
+                    echo $hot_id;
+                    print_r($_SESSION);
                 ?>
             </div>
         </main>
