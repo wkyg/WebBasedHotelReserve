@@ -1,5 +1,5 @@
 <?php
-    session_start();
+    //session_start();
     $search = $_GET["search"];
     $datein = $_GET["datein"];
     $dateout = $_GET["dateout"];

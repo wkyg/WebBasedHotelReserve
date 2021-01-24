@@ -155,24 +155,23 @@
                 $conn = mysqli_connect("localhost", "root", "", "hotel");
             
                 if($conn){
-                    $sql = "SELECT * FROM HOTEL_IMG";
                     $sql_2 = "SELECT * FROM HOTEL WHERE HOTEL_NAME LIKE '%$search%' OR HOTEL_LOC LIKE '%$search%'";
-                    $result = $conn->query($sql);
                     $result_2 = $conn->query($sql_2);
                     while($row = $result_2->fetch_assoc()){
                         $name = $row['HOTEL_NAME'];
                         $location = $row['HOTEL_LOC'];
                         $img = $row['HOTEL_IMG'];
                         $desc = $row['HOTEL_DES'];
-                        $price = $row['HOTEL_PRICE']?>
+                        $price = $row['HOTEL_PRICE'];
+                        $id = $row['HOTEL_ID'];?>
                         <div class="container">
                             <div class="card mb-3">
                             <img src="data:image/jpg;charset=utf8;base64,<?php echo base64_encode($img); ?>" />
                                 <div class="card-body text-left">
-                                    <h3 class="card-title"><?php echo $name; ?></h3>
+                                    <h3 class="card-title"><?php echo $name.$id; ?></h3>
                                     <p class="card-text"><?php echo $location; ?></p>
                                     <p class="card-text"><?php echo $desc; ?></p>
-                                    <a href="#" class="btn btn-primary">More details</a>
+                                    <a href="hoteldetail.php" class="btn btn-primary">More details</a>
                                 </div>
                                 <div class="card-body text-right">
                                     <h3 class="card-title"><?php echo 'RM '.$price; ?></h3>
@@ -184,6 +183,8 @@
                     die("FATAL ERROR");
                 }
                 
+                $_POST["hotel_id"] = $id;
+
                 $conn->close();
             ?>
         </main>
