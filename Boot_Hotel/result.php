@@ -76,7 +76,7 @@
                     </div>-->
                     <div class="col-sm">
                         <div class="form-group">
-                            <form action="data.php?data=<?=$id?>" method="GET">
+                            <form action="search.php" method="GET">
                                 <div class="input-group">
                                     <input type="text" class="form-control form-control-lg rounded-0" name="search" id="searchForm" placeholder="Location">
                                     <input type="text" class="form-control form-control-lg rounded-0" name="datein" placeholder="Date-in" onfocus="(this.type='date')" onblur="(this.type='text')">
@@ -151,7 +151,7 @@
                 echo $children."</br>";
                 echo $room."</br>";
                 */
-                $img = 'IMG_';
+                //$img = 'IMG_';
                 $conn = mysqli_connect("localhost", "root", "", "hotel");
             
                 if($conn){
@@ -168,10 +168,10 @@
                             <div class="card mb-3">
                             <img src="data:image/jpg;charset=utf8;base64,<?php echo base64_encode($img); ?>" />
                                 <div class="card-body text-left">
-                                    <h3 class="card-title"><?php echo $name.$id; ?></h3>
+                                    <h3 class="card-title"><?php echo $name; ?></h3>
                                     <p class="card-text"><?php echo $location; ?></p>
                                     <p class="card-text"><?php echo $desc; ?></p>
-                                    <a href="hoteldetail.php" class="btn btn-primary">More details</a>
+                                    <a href="hoteldetail.php?hotel_id=<?=$id?>" class="btn btn-primary">More details</a>
                                 </div>
                                 <div class="card-body text-right">
                                     <h3 class="card-title"><?php echo 'RM '.$price; ?></h3>
@@ -182,8 +182,7 @@
                 }else{
                     die("FATAL ERROR");
                 }
-                
-                print_r($_SESSION);
+               
                 $conn->close();
             ?>
         </main>

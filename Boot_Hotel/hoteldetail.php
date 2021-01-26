@@ -1,8 +1,3 @@
-<?php
-    include "search.php";
-    session_start();
-    $hot_id = $_GET["$id"];
-?>
 <!doctype html>
 <html lang="en">
     <head>
@@ -60,38 +55,65 @@
             </div>
         </header>
         <main class="container text-center">
-            <div id="carouselExampleIndicators" class="carousel slide" data-bs-ride="carousel">
+            <div id="carouselExampleIndicators" class="carousel slide carousel-fade" data-bs-ride="carousel">
                 <ol class="carousel-indicators">
                     <li data-target="#carouselExampleIndicators" data-slide-to="0" class="active"></li>
                     <li data-target="#carouselExampleIndicators" data-slide-to="1"></li>
                     <li data-target="#carouselExampleIndicators" data-slide-to="2"></li>
+                    <li data-target="#carouselExampleIndicators" data-slide-to="3"></li>
+                    <li data-target="#carouselExampleIndicators" data-slide-to="4"></li>
                 </ol>
-                <div class="carousel-inner">
-                    <div class="carousel-item active">
-                        <img class="d-block w-100" src="images/hotel-1-3.jpg" height="500" alt="First slide">
-                        <div class="carousel-caption d-none d-md-block">
-                            <h5>My Caption Title (1st Image)</h5>
-                            <p>The whole caption will only show up if the screen is at least medium size.</p>
-                        </div>
-                    </div>
-                    <div class="carousel-item">
-                        <img class="d-block w-100" src="images/hotel-1-1.jpg" height="500" alt="Second slide">
-                    </div>
-                    <div class="carousel-item">
-                        <img class="d-block w-100" src="images/hotel-1-2.jpg" height="500" alt="Third slide">
-                    </div>
-                </div>
-                <a class="carousel-control-prev" href="#carouselExampleIndicators" role="button" data-slide="prev">
-                    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-                    <span class="sr-only">Previous</span>
-                </a>
-                <a class="carousel-control-next" href="#carouselExampleIndicators" role="button" data-slide="next">
-                    <span class="carousel-control-next-icon" aria-hidden="true"></span>
-                    <span class="sr-only">Next</span>
-                </a>
                 <?php
-                    echo $hot_id;
-                    print_r($_SESSION);
+                    $hotel_detail_id = $_GET["hotel_id"];
+                    $conn = mysqli_connect("localhost", "root", "", "hotel");
+                
+                    if($conn){
+                        $sql = "SELECT * FROM HOTEL_IMG WHERE HOTEL_ID = '$hotel_detail_id'";
+                        $result = $conn->query($sql);
+                        while($row = $result->fetch_assoc()){
+                            $img_1 = $row['IMG_1'];
+                            $img_2 = $row['IMG_2'];
+                            $img_3 = $row['IMG_3'];
+                            $img_4 = $row['IMG_4'];
+                            $img_5 = $row['IMG_5'];?>
+                                <div class="carousel-inner">
+                                    <div class="carousel-item active">
+                                        <img class="d-block w-100" src="data:image/jpg;charset=utf8;base64,<?php echo base64_encode($img_1); ?>" height=auto alt="img_1" />
+                                        <div class="carousel-caption d-none d-md-block">
+                                            <h5>My Caption Title (1st Image)</h5>
+                                            <p>The whole caption will only show up if the screen is at least medium size.</p>
+                                        </div>
+                                    </div>
+                                    <div class="carousel-item">
+                                        <img class="d-block w-100" src="data:image/jpg;charset=utf8;base64,<?php echo base64_encode($img_2); ?>" height=auto alt="img_2" />
+                                    </div>
+                                    <div class="carousel-item">
+                                        <img class="d-block w-100" src="data:image/jpg;charset=utf8;base64,<?php echo base64_encode($img_3); ?>" height=auto alt="img_3" />    
+                                    </div>
+                                    <div class="carousel-item">
+                                        <img class="d-block w-100" src="data:image/jpg;charset=utf8;base64,<?php echo base64_encode($img_4); ?>" height=auto alt="img_4" />    
+                                    </div>
+                                    <div class="carousel-item">
+                                        <img class="d-block w-100" src="data:image/jpg;charset=utf8;base64,<?php echo base64_encode($img_5); ?>" height=auto alt="img_5" />    
+                                    </div>
+                                </div>
+                                <a class="carousel-control-prev" href="#carouselExampleIndicators" role="button" data-slide="prev">
+                                    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                                    <span class="sr-only">Previous</span>
+                                </a>
+                                <a class="carousel-control-next" href="#carouselExampleIndicators" role="button" data-slide="next">
+                                    <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                                    <span class="sr-only">Next</span>
+                                </a>
+                            <?php
+                        }
+                    }else{
+                        die("FATAL ERROR");
+                    }
+                    $conn->close();
+                ?>
+                <?php
+                    echo $_GET["hotel_id"];
                 ?>
             </div>
         </main>
