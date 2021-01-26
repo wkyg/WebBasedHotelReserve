@@ -182,7 +182,6 @@
                 }else{
                     die("FATAL ERROR");
                 }
-               
                 $conn->close();
             ?>
         </main>
