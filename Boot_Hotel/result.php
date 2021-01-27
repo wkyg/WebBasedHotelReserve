@@ -166,7 +166,7 @@
                         $id = $row['HOTEL_ID'];?>
                         <div class="container">
                             <div class="card mb-3">
-                            <img src="data:image/jpg;charset=utf8;base64,<?php echo base64_encode($img); ?>" />
+                                <img src="data:image/jpg;charset=utf8;base64,<?php echo base64_encode($img); ?>" />
                                 <div class="card-body text-left">
                                     <h3 class="card-title"><?php echo $name; ?></h3>
                                     <p class="card-text"><?php echo $location; ?></p>

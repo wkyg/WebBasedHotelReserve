@@ -56,6 +56,13 @@
         </header>
         <main class="container">
             <div class="container">
+                <div class="row text-center">
+                    <div class="col-lg">
+                        <div class="jumbotron bg-light">
+                            <h6 class="lead">Your satisfaction, our motivation</h6>        
+                        </div>
+                    </div>
+                </div>
                 <div id="carouselExampleIndicators" class="carousel slide carousel-fade" data-bs-ride="carousel">
                     <ol class="carousel-indicators">
                         <li data-target="#carouselExampleIndicators" data-slide-to="0" class="active"></li>
@@ -157,7 +164,7 @@
                                 </li>
                             </ul>
                             <div class="tab-content rounded" id="pills-tabContent">
-                                <div class="tab-pane fade show active" id="pills-overview" role="tabpanel" aria-labelledby="pills-home-tab">
+                                <div class="tab-pane fade active" id="pills-overview" role="tabpanel" aria-labelledby="pills-home-tab">
                                     <div class="row">
                                         <div class="col-lg">
                                             <div class="row">
@@ -178,7 +185,6 @@
                                                 </div>
                                             </div?>
                                         </div>
-                                        
                                     </div>  
                                 </div>
                                 <div class="tab-pane fade" id="pills-info" role="tabpanel" aria-labelledby="pills-profile-tab">2</div>
