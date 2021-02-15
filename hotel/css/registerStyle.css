@@ -1,0 +1,17 @@
+*{
+    font-family: Century Gothic;
+}
+
+body{
+    background-color: #333;
+    background-image: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)), url(../images/back_logreg.jpg);
+}
+
+.sign-in{
+    width: 100%;
+    max-width: 330px;
+    padding: 15px;
+    margin: auto;
+}
+
+
