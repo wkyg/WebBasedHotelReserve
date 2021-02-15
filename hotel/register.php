@@ -46,7 +46,7 @@
             if(mysqli_query($conn, $sql)){
                 echo "Register success". "</br>";
                 //$adminMailChk = mail("hotelfypp@gmail.com", "User_Enquiry", $cont, "From: hotelfypp@gmail.com");
-                $custMailChk = mail($mail, "Thank you for your registration", "hahahahahhhahaha", "From: hotelfypp@gmail.com");
+                $custMailChk = mail($mail, "Thank you for your registration", "Registered", "From: hotelfypp@gmail.com");
                 if($custMailChk){
                     header("Location: registerSuccess.html");
                     exit();

@@ -5,7 +5,7 @@
 
     if($conn){
         $sql = "SELECT * FROM HOTEL_IMG WHERE HOTEL_ID = '$hotel_detail_id'";
-        $sql2 = "SELECT HOTEL_NAME, HOTEL_DES, HOTEL_DETAIL, HOTEL_LOC, HOTEL_STAR FROM HOTEL WHERE HOTEL_ID = '$hotel_detail_id'";
+        $sql2 = "SELECT HOTEL_NAME, HOTEL_DES, HOTEL_DETAIL, HOTEL_INFO, HOTEL_LOC, HOTEL_STAR FROM HOTEL WHERE HOTEL_ID = '$hotel_detail_id'";
         $sql3 = "SELECT COMMENT_ID, COMMENT_CONTENT FROM COMMENT WHERE HOTEL_ID = '$hotel_detail_id'";
         $result = $conn->query($sql);
         $result2 = $conn->query($sql2);
@@ -21,6 +21,7 @@
             $hotel_name = $row_2['HOTEL_NAME'];
             $hotel_des = $row_2['HOTEL_DES'];   
             $detail = $row_2["HOTEL_DETAIL"];
+            $info = $row_2["HOTEL_INFO"];
             $location = $row_2["HOTEL_LOC"];
             $hotel_star = $row_2["HOTEL_STAR"]; 
 
@@ -176,6 +177,7 @@
                                 <h3 class="card-title">Hotel Description</h3>
                                 <?php echo $detail; ?>
                                 <h3 class="card-title mt-5">Guest reviews</h3>
+                                <h6 class="card-subtitle mb-2 text-muted"><a href="#">View all</a></h6>
                                 <div class="row">
                                     <?php
                                         $hotel_detail_id = $_GET["hotel_id"];
@@ -220,6 +222,7 @@
                                     ?>
                                 </div>
                                 <h3 class="card-title mt-5">Amenities & Facilities</h3>
+                                <h6 class="card-subtitle mb-2 text-muted"><a href="#">View all</a></h6>
                                 <div class="row">
                                     <?php
                                         $hotel_detail_id = $_GET["hotel_id"];
@@ -240,7 +243,7 @@
 
                                             while($row_4 = $result4->fetch_assoc()){
                                                 $amenities_id = $row_4["AMENITIES_ID"];
-                                                echo $amenities_id."</br>";
+                                                //echo $amenities_id."</br>";
 
                                                 if($amenities_id == 1){?>
                                                     <div class="col-lg text-center">
@@ -273,7 +276,7 @@
                                                 }
                                                 while($row_5 = $result5->fetch_assoc()){
                                                     $amenities_id = $row_5["AMENITIES_ID"];
-                                                    echo $amenities_id."</br>";
+                                                    //echo $amenities_id."</br>";
 
                                                     if($amenities_id == 16){?>
                                                         <div class="col-lg text-center">
@@ -304,7 +307,7 @@
                                                     }
                                                     while($row_6 = $result6->fetch_assoc()){
                                                         $amenities_id = $row_6["AMENITIES_ID"];
-                                                        echo $amenities_id."</br>";
+                                                        //echo $amenities_id."</br>";
 
                                                         if($amenities_id == 31){?>
                                                             <div class="col-lg text-center">
@@ -337,7 +340,7 @@
                                                         }
                                                         while($row_7 = $result7->fetch_assoc()){
                                                             $amenities_id = $row_7["AMENITIES_ID"];
-                                                            echo $amenities_id."</br>";
+                                                            //echo $amenities_id."</br>";
 
                                                             if($amenities_id == 28){?>
                                                                 <div class="col-lg text-center">
@@ -368,7 +371,7 @@
                                                             }
                                                             while($row_8 = $result8->fetch_assoc()){
                                                                 $amenities_id = $row_8["AMENITIES_ID"];
-                                                                echo $amenities_id."</br>";
+                                                                //echo $amenities_id."</br>";
 
                                                                 if($amenities_id == 34){?>
                                                                     <div class="col-lg text-center">
@@ -411,7 +414,247 @@
                             </div>
                         </div>
                     </div>
-                    <div class="tab-pane fade" id="pills-info" role="tabpanel" aria-labelledby="pills-profile-tab">2</div>
+                    <div class="tab-pane fade" id="pills-info" role="tabpanel" aria-labelledby="pills-profile-tab">
+                        <div class="card">
+                            <div class="card-header">
+                                <h2><?php echo $hotel_name; ?>@<?php echo $location ?></h2>
+                            </div>
+                            <div class="card-body">
+                                <h3 class="card-title">Hotel Info</h3>
+                                <?php echo $info; ?>
+                                <h3 class="card-title mt-5">All Amenities</h3>
+                                <div class="row">
+                                    <div class="col-lg">
+                                        <div class="card">
+                                            <div class="card-body">
+                                                <h5 class="card-title"> Hotel Facilities </h5>
+                                                <h6 class="card-subtitle text-muted">
+                                                    <?php
+                                                        $hotel_detail_id = $_GET["hotel_id"];
+                                                        $conn = mysqli_connect("localhost", "root", "", "hotel");
+
+                                                        if($conn){
+                                                            $sql9 = "SELECT * FROM HOTEL_AMENITIES_VIEW WHERE HOTEL_ID = '$hotel_detail_id' AND AMENITIES_TYPE = 'Hotel Facilities'";
+                                                            $result9 = $conn->query($sql9);
+
+                                                            while($row_9 = $result9->fetch_assoc()){
+                                                                //$amenitiesID = $row_9["AMENITIES_ID"];
+                                                                $amenity = $row_9["AMENITIY"];
+                                                                //$amenity_type = $row_9["AMENITIES_TYPE"];
+
+                                                                //echo $amenities_id."</br>";
+                                                                //echo "TYPE: ".$amenity_type."</br>";
+                                                                echo "-".$amenity."</br>";
+                                                            }
+                                                        }else{
+                                                            die("FATAL ERROR");
+                                                        }
+                                                        $conn->close();
+                                                    ?>
+                                                </h6>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-lg">
+                                    <div class="card">
+                                            <div class="card-body">
+                                                <h6 class="card-title"> Room Facilities </h6>
+                                                <h6 class="card-subtitle text-muted">
+                                                    <?php
+                                                        $hotel_detail_id = $_GET["hotel_id"];
+                                                        $conn = mysqli_connect("localhost", "root", "", "hotel");
+
+                                                        if($conn){
+                                                            $sql9 = "SELECT * FROM HOTEL_AMENITIES_VIEW WHERE HOTEL_ID = '$hotel_detail_id' AND AMENITIES_TYPE = 'Room Facilities'";
+                                                            $result9 = $conn->query($sql9);
+
+                                                            while($row_9 = $result9->fetch_assoc()){
+                                                                //$amenitiesID = $row_9["AMENITIES_ID"];
+                                                                $amenity = $row_9["AMENITIY"];
+                                                                //$amenity_type = $row_9["AMENITIES_TYPE"];
+
+                                                                //echo $amenities_id."</br>";
+                                                                //echo "TYPE: ".$amenity_type."</br>";
+                                                                echo "-".$amenity."</br>";
+                                                            }
+                                                        }else{
+                                                            die("FATAL ERROR");
+                                                        }
+                                                        $conn->close();
+                                                    ?>
+                                                </h6>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-lg">
+                                    <div class="card">
+                                            <div class="card-body">
+                                                <h6 class="card-title"> Accessibility </h6>
+                                                <h6 class="card-subtitle text-muted">
+                                                    <?php
+                                                        $hotel_detail_id = $_GET["hotel_id"];
+                                                        $conn = mysqli_connect("localhost", "root", "", "hotel");
+
+                                                        if($conn){
+                                                            $sql9 = "SELECT * FROM HOTEL_AMENITIES_VIEW WHERE HOTEL_ID = '$hotel_detail_id' AND AMENITIES_TYPE = 'Accessibility'";
+                                                            $result9 = $conn->query($sql9);
+
+                                                            while($row_9 = $result9->fetch_assoc()){
+                                                                //$amenitiesID = $row_9["AMENITIES_ID"];
+                                                                $amenity = $row_9["AMENITIY"];
+                                                                //$amenity_type = $row_9["AMENITIES_TYPE"];
+
+                                                                //echo $amenities_id."</br>";
+                                                                //echo "TYPE: ".$amenity_type."</br>";
+                                                                echo "-".$amenity."</br>";
+                                                            }
+                                                        }else{
+                                                            die("FATAL ERROR");
+                                                        }
+                                                        $conn->close();
+                                                    ?>
+                                                </h6>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-lg">
+                                    <div class="card">
+                                            <div class="card-body">
+                                                <h6 class="card-title"> Wellness </h6>
+                                                <h6 class="card-subtitle text-muted">
+                                                    <?php
+                                                        $hotel_detail_id = $_GET["hotel_id"];
+                                                        $conn = mysqli_connect("localhost", "root", "", "hotel");
+
+                                                        if($conn){
+                                                            $sql9 = "SELECT * FROM HOTEL_AMENITIES_VIEW WHERE HOTEL_ID = '$hotel_detail_id' AND AMENITIES_TYPE = 'Wellness'";
+                                                            $result9 = $conn->query($sql9);
+
+                                                            while($row_9 = $result9->fetch_assoc()){
+                                                                //$amenitiesID = $row_9["AMENITIES_ID"];
+                                                                $amenity = $row_9["AMENITIY"];
+                                                                //$amenity_type = $row_9["AMENITIES_TYPE"];
+
+                                                                //echo $amenities_id."</br>";
+                                                                //echo "TYPE: ".$amenity_type."</br>";
+                                                                echo "-".$amenity."</br>";
+                                                            }
+                                                        }else{
+                                                            die("FATAL ERROR");
+                                                        }
+                                                        $conn->close();
+                                                    ?>
+                                                </h6>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-lg">
+                                        <div class="card">
+                                            <div class="card-body">
+                                                <h6 class="card-title"> Children </h6>
+                                                <h6 class="card-subtitle text-muted">
+                                                    <?php
+                                                        $hotel_detail_id = $_GET["hotel_id"];
+                                                        $conn = mysqli_connect("localhost", "root", "", "hotel");
+
+                                                        if($conn){
+                                                            $sql9 = "SELECT * FROM HOTEL_AMENITIES_VIEW WHERE HOTEL_ID = '$hotel_detail_id' AND AMENITIES_TYPE = 'Children'";
+                                                            $result9 = $conn->query($sql9);
+
+                                                            while($row_9 = $result9->fetch_assoc()){
+                                                                //$amenitiesID = $row_9["AMENITIES_ID"];
+                                                                $amenity = $row_9["AMENITIY"];
+                                                                //$amenity_type = $row_9["AMENITIES_TYPE"];
+
+                                                                //echo $amenities_id."</br>";
+                                                                //echo "TYPE: ".$amenity_type."</br>";
+                                                                echo "-".$amenity."</br>";
+                                                            }
+                                                        }else{
+                                                            die("FATAL ERROR");
+                                                        }
+                                                        $conn->close();
+                                                    ?>
+                                                </h6>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <h3 class="card-title mt-5">Arrival / Departure</h3>
+                                <div class="row">
+                                    <div class="col-lg">
+                                        <div class="card">
+                                            <div class="card-body">
+                                                <?php
+                                                    $hotel_detail_id = $_GET["hotel_id"];
+                                                    $conn = mysqli_connect("localhost", "root", "", "hotel");
+
+                                                    if($conn){
+                                                        $sql10 = "SELECT CHECK_IN, CHECK_OUT FROM HOTEL WHERE HOTEL_ID = '$hotel_detail_id'";
+                                                        $result10 = $conn->query($sql10);
+
+                                                        while($row_10 = $result10->fetch_assoc()){
+                                                            $check_in = $row_10["CHECK_IN"];
+                                                            $check_out = $row_10["CHECK_OUT"];?>
+                                                            
+                                                            <h6 class="card-title"> Check-in: <?php echo substr($check_in, 0, 5) ?></h6>
+                                                            <h6 class="card-title"> Check-out: <?php echo substr($check_out, 0, 5) ?> </h6><?php
+                                                        }
+                                                    }else{
+                                                        die("FATAL ERROR");
+                                                    }
+                                                    $conn->close();
+                                                ?>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <h3 class="card-title mt-5">Contact</h3>
+                                <div class="row">
+                                    <div class="col-lg">
+                                        <div class="card">
+                                            <div class="card-body">
+                                                <?php
+                                                    $hotel_detail_id = $_GET["hotel_id"];
+                                                    $conn = mysqli_connect("localhost", "root", "", "hotel");
+
+                                                    if($conn){
+                                                        $sql11 = "SELECT ADDRESS, CONTACT FROM HOTEL WHERE HOTEL_ID = '$hotel_detail_id'";
+                                                        $result11 = $conn->query($sql11);
+
+                                                        while($row_11 = $result11->fetch_assoc()){
+                                                            $address = $row_11["ADDRESS"];
+                                                            $contact = $row_11["CONTACT"];?>
+                                                            
+                                                            <h6 class="card-title"> <?php echo $address ?></h6>
+                                                            <h6 class="card-title"> <?php echo $contact ?> </h6><?php
+                                                        }
+                                                    }else{
+                                                        die("FATAL ERROR");
+                                                    }
+                                                    $conn->close();
+                                                ?>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <h3 class="card-title mt-5">Enquiry</h3>
+                                <div class="row">
+                                    <div class="col-lg">
+                                        <div class="card">
+                                            <div class="card-body">
+                                                <form action="hotelierMail.php?hotel_id=<?=$hotel_detail_id?>" method="POST">
+                                                    <p class="lead">Enter you enquiry below and we will get to you soon</p>
+                                                    <p><textarea class="form-control form-control-lg" name="content" placeholder="Enter your enquiry here"></textarea></p>
+                                                    <button type="submit" class="btn btn-primary btn-lg">Submit</button>
+                                                </form>
+                                            </div>    
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
                     <div class="tab-pane fade" id="pills-review" role="tabpanel" aria-labelledby="pills-contact-tab">3</div>
                     <div class="tab-pane fade" id="pills-rooms" role="tabpanel" aria-labelledby="pills-contact-tab">4</div>
                 </div>            
