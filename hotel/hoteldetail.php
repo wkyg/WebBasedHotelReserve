@@ -64,44 +64,9 @@
         <title>Hotel Reservation</title>
     </head>
     <body>
-        <header class="container">
-            <div class="container">
-                <!--Navigation-->
-                <nav class="navbar navbar-expand-md navbar-dark bg-transparent">
-                    <a class="navbar-brand" href="index.html"><img src="images/logo.png" width="100" height="100"alt="logo"></a>
-                    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent">
-                        <span class="navbar-toggler-icon"></span>
-                    </button>
-                    
-                    <div class="collapse navbar-collapse" id="navbarSupportedContent">
-                        <ul class="navbar-nav ml-auto">
-                            <li class="nav-item active">
-                                <a class="nav-link" href="login.html">Login <span class="sr-only">(current)</span></a>
-                            </li>
-                            <li class="nav-item">
-                                <a class="nav-link" href="register.html">Register</a>
-                            </li>
-                            <li class="nav-item dropdown">
-                                <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                MYR
-                                </a>
-                                <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                                    <a class="dropdown-item" href="#">SGD</a>
-                                    <a class="dropdown-item" href="#">THB</a>
-                                    <a class="dropdown-item" href="#">USD</a>
-                                </div>
-                            </li>
-                            <li class="nav-item">
-                                <a class="nav-link" href="about.html">About</a>
-                            </li>
-                            <li class="nav-item">
-                                <a class="nav-link" href="contact.html">Contact</a>
-                            </li>
-                        </ul>
-                    </div>
-                </nav>
-            </div>
-        </header>
+        <?php
+            include_once "header.php";
+        ?>
         <main class="container">
             <div class="container">
                 <div id="carouselExampleIndicators" class="carousel slide carousel-fade" data-bs-ride="carousel">
@@ -662,8 +627,78 @@
                             </div>
                             <div class="card-body">
                                 <h3 class="card-title">Rating overview</h3>
-                                
+                                <div class="row">
+                                    <div class="col-lg">
+                                        <div class="card">
+                                            <div class="card-body">
+                                                <?php
+                                                    $hotel_detail_id = $_GET["hotel_id"];
+                                                    $conn = mysqli_connect("localhost", "root", "", "hotel");
+
+                                                    if($conn){
+                                                        $sql12 = "SELECT AVG(RATE_SCORE) FROM RATING WHERE HOTEL_ID = '$hotel_detail_id'";
+                                                        $sql13 = "SELECT COUNT(RATE_SCORE) FROM RATING WHERE HOTEL_ID = '$hotel_detail_id'";
+                                                        $result12 = $conn->query($sql12);
+                                                        $result13 = $conn->query($sql13);
+
+                                                        while($row_12 = $result12->fetch_assoc()){
+                                                            $avgScore = $row_12["AVG(RATE_SCORE)"];?>
+                                                            <h3>
+                                                                <span class="badge badge-primary"><?php echo substr($avgScore, 0, 3);?></span>
+                                                            </h3><?php
+                                                            while($row_13 = $result13->fetch_assoc()){
+                                                                $countScore = $row_13["COUNT(RATE_SCORE)"];?>
+                                                                Rating index based on <b><?php echo $countScore; ?></b> user(s) <?php
+                                                            }
+                                                        }
+                                                    }else{
+                                                        die("FATAL ERROR");
+                                                    }
+                                                    $conn->close();
+                                                ?>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
                                 <h3 class="card-title mt-5">Guest reviews</h3>
+                                
+                                <?php
+                                    $hotel_detail_id = $_GET["hotel_id"];
+                                    $conn = mysqli_connect("localhost", "root", "", "hotel");
+
+                                    if($conn){
+                                        $sql14 = "SELECT COMMENT_CONTENT, USER_NAME, RATE_SCORE FROM USER_COMMENT_RATING_HOTEL_VIEW WHERE HOTEL_ID = '$hotel_detail_id'";
+                                        $result14 = $conn->query($sql14);
+
+                                        while($row_14 = $result14->fetch_assoc()){
+                                            $com_con = $row_14["COMMENT_CONTENT"];
+                                            $u_name = $row_14["USER_NAME"];
+                                            $r_score = $row_14["RATE_SCORE"];?>
+                                            <div class="row mb-3">
+                                                <div class="col-lg">
+                                                    <div class="card">
+                                                        <div class="card-body">
+                                                            <h4>
+                                                                <span class="badge badge-primary"><?php echo $r_score.".0"; ?></span>
+                                                            </h4>
+                                                            <?php echo $u_name; ?>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="col-lg-10">
+                                                    <div class="card">
+                                                        <div class="card-body">
+                                                        <?php echo $com_con; ?>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div><?php
+                                        }
+                                    }else{
+                                        die("FATAL ERROR");
+                                    }
+                                    $conn->close();
+                                ?>
                             </div>
                         </div>
                     </div>
@@ -671,8 +706,8 @@
                 </div>            
             </div>
         </main>
-        <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
-        <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js" integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN" crossorigin="anonymous"></script>
-        <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/js/bootstrap.min.js" integrity="sha384-w1Q4orYjBQndcko6MimVbzY0tgp4pWB4lZ7lr30WKz0vr/aWKhXdBNmNb5D92v7s" crossorigin="anonymous"></script>
+        <?php
+            include_once "footer.php";
+        ?>
     </body>
 </html>

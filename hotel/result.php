@@ -1,12 +1,3 @@
-<?php
-    session_start();
-    $search = $_SESSION["search_result"];
-    $datein = $_SESSION["datein_result"];
-    $dateout = $_SESSION["dateout_result"];
-    $adults = $_SESSION["adults_result"];
-    $children = $_SESSION["children_result"];
-    $room = $_SESSION["room_result"];
-?>
 <!doctype html>
 <html lang="en">
     <head>
@@ -25,44 +16,15 @@
         <title>Hotel Reservation</title>
     </head>
     <body>
-        <header class="container">
-            <div class="container">
-                <!--Navigation-->
-                <nav class="navbar navbar-expand-md navbar-dark bg-transparent">
-                    <a class="navbar-brand" href="index.html"><img src="images/logo.png" width="100" height="100"alt="logo"></a>
-                    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent">
-                        <span class="navbar-toggler-icon"></span>
-                    </button>
-                    
-                    <div class="collapse navbar-collapse" id="navbarSupportedContent">
-                        <ul class="navbar-nav ml-auto">
-                            <li class="nav-item active">
-                                <a class="nav-link" href="login.html">Login <span class="sr-only">(current)</span></a>
-                            </li>
-                            <li class="nav-item">
-                                <a class="nav-link" href="register.html">Register</a>
-                            </li>
-                            <li class="nav-item dropdown">
-                                <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                MYR
-                                </a>
-                                <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                                    <a class="dropdown-item" href="#">SGD</a>
-                                    <a class="dropdown-item" href="#">THB</a>
-                                    <a class="dropdown-item" href="#">USD</a>
-                                </div>
-                            </li>
-                            <li class="nav-item">
-                                <a class="nav-link" href="about.html">About</a>
-                            </li>
-                            <li class="nav-item">
-                                <a class="nav-link" href="contact.html">Contact</a>
-                            </li>
-                        </ul>
-                    </div>
-                </nav>
-            </div>
-        </header>
+        <?php
+            include_once "header.php";
+            $search = $_SESSION["search_result"];
+            $datein = $_SESSION["datein_result"];
+            $dateout = $_SESSION["dateout_result"];
+            $adults = $_SESSION["adults_result"];
+            $children = $_SESSION["children_result"];
+            $room = $_SESSION["room_result"];
+        ?>
         <main class="container text-center">
             <div class="container">
                 <!--Form box-->
@@ -185,8 +147,8 @@
                 $conn->close();
             ?>
         </main>
-        <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
-        <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js" integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN" crossorigin="anonymous"></script>
-        <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/js/bootstrap.min.js" integrity="sha384-w1Q4orYjBQndcko6MimVbzY0tgp4pWB4lZ7lr30WKz0vr/aWKhXdBNmNb5D92v7s" crossorigin="anonymous"></script>
+        <?php
+            include_once "footer.php";
+        ?>
     </body>
 </html>

@@ -1,4 +1,5 @@
 <?php
+    session_start();
     $user = $_POST["user"];
     $pass = $_POST["pass"];
     $tempUser = "";
@@ -9,13 +10,13 @@
     $conn = mysqli_connect("localhost", "root", "", "hotel");
 
     if($conn){
-        $sql = "SELECT USER_NAME, USER_PASS FROM USER";
+        $sql = "SELECT USER_ID, USER_NAME, USER_PASS FROM USER";
         $result = $conn->query($sql);
 
-        $sql_2 = "SELECT HOTELIER_NAME, HOTELIER_PASS FROM HOTELIER";
+        $sql_2 = "SELECT HOTELIER_ID, HOTELIER_NAME, HOTELIER_PASS FROM HOTELIER";
         $result_2 = $conn->query($sql_2);
 
-        $sql_3 = "SELECT ADMIN_NAME, ADMIN_PASS FROM ADMIN";
+        $sql_3 = "SELECT ADMIN_ID, ADMIN_NAME, ADMIN_PASS FROM ADMIN";
         $result_3 = $conn->query($sql_3);
 
         //Display results
@@ -64,6 +65,7 @@
         //begin check criteria
         if(mysqli_query($conn, $sql)){
             while($row = $result->fetch_assoc()) {
+                $tempUserID = $row["USER_ID"];
                 $tempUser = $row["USER_NAME"];
                 $tempPass = $row["USER_PASS"];
                 if (password_verify("$pass", "$tempPass")){
@@ -75,7 +77,10 @@
                 }
                 if ($user == $tempUser && $cryptFlag == TRUE){
                     echo "yes User". "</br>";
-                    header("Location: loginSuccess.html");
+                    $_SESSION["logged"] = TRUE;
+                    $_SESSION["user"] = $user;
+                    $_SESSION["userID"] = $tempUserID;
+                    header("Location: loginSuccess.php");
                     exit();
                 }else{
                     echo "no". "</br>";
@@ -89,7 +94,7 @@
                 $tempPass = $row["HOTELIER_PASS"];
                 if ($user == $tempUser && $cryptFlag == TRUE){
                     echo "yes Hotelier". "</br>";
-                    header("Location: loginSuccess.html");
+                    header("Location: loginSuccess.php");
                     exit();
                 }else{
                     echo "no". "</br>";
@@ -103,7 +108,7 @@
                 $tempPass = $row["ADMIN_PASS"];
                 if ($user == $tempUser && $cryptFlag == TRUE){
                     echo "yes Admin". "</br>";
-                    header("Location: loginSuccess.html");
+                    header("Location: loginSuccess.php");
                     exit();
                 }else{
                     echo "no". "</br>";
