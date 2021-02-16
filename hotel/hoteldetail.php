@@ -655,7 +655,18 @@
                             </div>
                         </div>
                     </div>
-                    <div class="tab-pane fade" id="pills-review" role="tabpanel" aria-labelledby="pills-contact-tab">3</div>
+                    <div class="tab-pane fade" id="pills-review" role="tabpanel" aria-labelledby="pills-contact-tab">
+                        <div class="card">
+                            <div class="card-header">
+                                <h2><?php echo $hotel_name; ?>@<?php echo $location ?></h2>
+                            </div>
+                            <div class="card-body">
+                                <h3 class="card-title">Rating overview</h3>
+                                
+                                <h3 class="card-title mt-5">Guest reviews</h3>
+                            </div>
+                        </div>
+                    </div>
                     <div class="tab-pane fade" id="pills-rooms" role="tabpanel" aria-labelledby="pills-contact-tab">4</div>
                 </div>            
             </div>
