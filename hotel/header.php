@@ -18,7 +18,7 @@
                         //echo $_SESSION["userID"];
                         if($_SESSION["logged"] == TRUE){?>
                             <li class="nav-item active">
-                                <a class="nav-link" href="profilePage.php"><?php echo $_SESSION["user"]; ?> <span class="sr-only">(current)</span></a>
+                                <a class="nav-link" href="profilePage.php">Hi, <?php echo $_SESSION["user"]; ?> <span class="sr-only">(current)</span></a>
                             </li>
                             <li class="nav-item dropdown">
                                 <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
@@ -67,6 +67,6 @@
                 </ul>
             </div>
         </nav>
-        <?php print_r($_SESSION); ?>
+        <?php //print_r($_SESSION); ?>
     </div>
 </header>

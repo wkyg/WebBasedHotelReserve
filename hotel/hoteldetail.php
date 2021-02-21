@@ -61,7 +61,7 @@
         <link rel="icon" type="image/png" sizes="32x32" href="images/favicon-32x32.png">
         <link rel="icon" type="image/png" sizes="16x16" href="images/favicon-16x16.png">
         <link rel="manifest" href="images/site.webmanifest">
-        <title>Hotel Reservation</title>
+        <title><?php echo $hotel_name ?></title>
     </head>
     <body>
         <?php
@@ -702,7 +702,68 @@
                             </div>
                         </div>
                     </div>
-                    <div class="tab-pane fade" id="pills-rooms" role="tabpanel" aria-labelledby="pills-contact-tab">4</div>
+                    <div class="tab-pane fade" id="pills-rooms" role="tabpanel" aria-labelledby="pills-contact-tab">
+                        <div class="card">
+                            <div class="card-header">
+                                <h2><?php echo $hotel_name; ?>@<?php echo $location ?></h2>
+                            </div>
+                            <div class="card-body">
+                                <h3 class="card-title">Available rooms</h3>
+                                <?php
+                                    $hotel_detail_id = $_GET["hotel_id"];
+                                    $conn = mysqli_connect("localhost", "root", "", "hotel");
+
+                                    if($conn){
+                                        $sql15 = "SELECT * FROM ROOM WHERE HOTEL_ID = '$hotel_detail_id'";
+                                        $result15 = $conn->query($sql15);
+
+                                        while($row_15 = $result15->fetch_assoc()){
+                                            $room_type = $row_15["ROOM_TYPE"];
+                                            $room_number = $row_15["ROOM_NUMBER"];
+                                            $room_avai = $row_15["ROOM_AVAI"];
+                                            $room_price = $row_15["ROOM_PRICE"];
+                                            $room_img = $row_15["ROOM_IMG"];?>
+                                           
+                                            <div class="row mb-3">
+                                                <div class="col-lg">
+                                                    <div class="card mb-3" id="special">
+                                                        <img src="data:image/jpg;charset=utf8;base64,<?php echo base64_encode($room_img); ?>" id="special-img" class="card-img-top" />
+                                                        <div class="card-body text-left">
+                                                            <h3 class="card-title" id="special-title"><?php echo $room_type; ?></h3>
+                                                            <p class="card-text"> Room number: <span class="badge badge-info"><?php echo $room_number ?></span></p>
+                                                            <p class="card-text">Room availability:
+                                                            <?php  
+                                                                if ($room_avai == "yes"){?>
+                                                                    <span class="badge badge-success">Available</span><?php
+                                                                }else{?>
+                                                                    <span class="badge badge-danger">Booked</span><?php
+                                                                }
+                                                            ?>    
+                                                            </p>   
+                                                            <?php  
+                                                                if ($room_avai == "yes"){?>
+                                                                    <a href="#" class="btn btn-primary">Book now</a><?php
+                                                                }else{?>
+                                                                    <a href="#" class="btn btn-primary disabled">Book now</a><?php
+                                                                }
+                                                            ?>                                                                                                                                   
+                                                            
+                                                        </div>
+                                                        <div class="card-body text-right">
+                                                            <h3 class="card-title"><?php echo 'RM '.$room_price; ?></h3>
+                                                        </div>
+                                                    </div>                                                                                                                                                       
+                                                </div>
+                                            </div><?php                                          
+                                        }
+                                    }else{
+                                        die("FATAL ERROR");
+                                    }
+                                    $conn->close();
+                                ?>
+                            </div>
+                        </div>
+                    </div>
                 </div>            
             </div>
         </main>
