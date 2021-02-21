@@ -142,7 +142,7 @@
                                             $conn = mysqli_connect("localhost", "root", "", "hotel");
             
                                             if($conn){
-                                                $sql_3 = "SELECT COUNT(ROOM_AVAI) FROM ROOM WHERE HOTEL_ID = 1 AND ROOM_AVAI = 'yes'";
+                                                $sql_3 = "SELECT COUNT(ROOM_AVAI) FROM ROOM WHERE HOTEL_ID = '$id' AND ROOM_AVAI = 'yes'";
                                                 $result_3 = $conn->query($sql_3);
 
                                                 while($row_2 = $result_3->fetch_assoc()){

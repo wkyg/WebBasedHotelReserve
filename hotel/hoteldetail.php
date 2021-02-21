@@ -742,7 +742,7 @@
                                                             </p>   
                                                             <?php  
                                                                 if ($room_avai == "yes"){?>
-                                                                    <a href="#" class="btn btn-primary">Book now</a><?php
+                                                                    <a href="payment.php" class="btn btn-primary">Book now</a><?php
                                                                 }else{?>
                                                                     <a href="#" class="btn btn-primary disabled">Book now</a><?php
                                                                 }
