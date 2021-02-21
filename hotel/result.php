@@ -137,6 +137,25 @@
                                 </div>
                                 <div class="card-body text-right">
                                     <h3 class="card-title"><?php echo 'RM '.$price; ?></h3>
+                                    <h5 class="card-subtitle">Room(s) left: 
+                                        <?php //TO BE CHANGED
+                                            $conn = mysqli_connect("localhost", "root", "", "hotel");
+            
+                                            if($conn){
+                                                $sql_3 = "SELECT COUNT(ROOM_AVAI) FROM ROOM WHERE HOTEL_ID = 1 AND ROOM_AVAI = 'yes'";
+                                                $result_3 = $conn->query($sql_3);
+
+                                                while($row_2 = $result_3->fetch_assoc()){
+                                                    $room_count = $row_2["COUNT(ROOM_AVAI)"];
+
+                                                    echo $room_count;
+                                                }
+                                            }else{
+                                                die("FATAL ERROR");
+                                            }
+                                            //$conn->close();
+                                        ?>
+                                    </h5>
                                 </div>
                             </div>
                         </div><?php

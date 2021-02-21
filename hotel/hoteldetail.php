@@ -746,8 +746,7 @@
                                                                 }else{?>
                                                                     <a href="#" class="btn btn-primary disabled">Book now</a><?php
                                                                 }
-                                                            ?>                                                                                                                                   
-                                                            
+                                                            ?>                                                                                                                                                                                              
                                                         </div>
                                                         <div class="card-body text-right">
                                                             <h3 class="card-title"><?php echo 'RM '.$room_price; ?></h3>
