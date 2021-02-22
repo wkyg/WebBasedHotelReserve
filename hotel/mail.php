@@ -10,7 +10,7 @@
 
     if($adminMailChk && $custMailChk){
         echo "Thank you for your enquiry";
-        header("Location: mailSuccess.html");
+        header("Location: mailSuccess.php");
         exit();
     }else{
         echo "Your enquiry did not reach us";

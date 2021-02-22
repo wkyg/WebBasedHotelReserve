@@ -17,7 +17,7 @@
             <div class="jumbotron">
                 <h1 class="display-4">Thank you for your enquiry</h1>
                     <p class="lead">You will be redirect to our homepage soon!</p>
-                    <p>Did not get redirected?<a href="index.html"> Click here</a></p>
+                    <p>Did not get redirected?<a href="index.php"> Click here</a></p>
             </div>
         </main>
         <?php

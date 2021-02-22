@@ -722,7 +722,8 @@
                                             $room_number = $row_15["ROOM_NUMBER"];
                                             $room_avai = $row_15["ROOM_AVAI"];
                                             $room_price = $row_15["ROOM_PRICE"];
-                                            $room_img = $row_15["ROOM_IMG"];?>
+                                            $room_img = $row_15["ROOM_IMG"];
+                                            $room_id = $row_15["ROOM_ID"];?>
                                            
                                             <div class="row mb-3">
                                                 <div class="col-lg">
@@ -742,7 +743,7 @@
                                                             </p>   
                                                             <?php  
                                                                 if ($room_avai == "yes"){?>
-                                                                    <a href="payment.php" class="btn btn-primary">Book now</a><?php
+                                                                    <a href="book.php?room_id=<?=$room_id?>&hotel_id=<?=$hotel_detail_id?>" class="btn btn-primary">Book now</a><?php
                                                                 }else{?>
                                                                     <a href="#" class="btn btn-primary disabled">Book now</a><?php
                                                                 }
