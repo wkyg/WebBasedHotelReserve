@@ -114,16 +114,55 @@
                     </div>
                 </div>
                 <div class="tab-pane fade" id="pills-booking" role="tabpanel" aria-labelledby="pills-contact-tab">
-                    <div class="jumbotron">
-                        <h1 class="display-4">Hello, <?php echo $_SESSION["user"] ?>!</h1>
-                        <p class="lead">In this page, you will be able to view your booking and update your details</p>
-                        <hr class="my-4">
-                        <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text 
-                            ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived 
-                            not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 
-                            1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like 
-                            Aldus PageMaker including versions of Lorem Ipsum.
-                        </p>
+                    <div class="card">
+                        <div class="card-header">
+                            <h3 class="card-title">Your bookings</h3>
+                        </div>
+                        <div class="card-body">
+                            <?php 
+                                $current_user_id = $_SESSION["userID"];
+                                $conn = mysqli_connect("localhost", "root", "", "hotel");
+
+                                if($conn){
+                                    $sql4 = "SELECT * FROM HOTEL_USER_BOOK WHERE USER_ID = '$current_user_id'";
+                                    $result4 = $conn->query($sql4);
+
+                                    while($row_4 = $result4->fetch_assoc()){
+                                        $hotel_name = $row_4["HOTEL_NAME"];
+                                        $hotel_loc = $row_4["HOTEL_LOC"];
+                                        $hotel_contact = $row_4["CONTACT"];
+                                        $room_type = $row_4["ROOM_TYPE"];
+                                        $room_num = $row_4["ROOM_NUMBER"];
+                                        $room_price = $row_4["ROOM_PRICE"];
+                                        $room_img = $row_4["ROOM_IMG"];
+                                        $book_date = $row_4["BOOK_DATE"];
+                                        $payment_meth = $row_4["PAYMENT_TYPE"];?>
+
+                                        <div class="row mb-3">               
+                                            <div class="col-lg">
+                                                <div class="card">
+                                                    <div class="card-body">
+                                                        <p class="card-text">Hotel name: <b><?php echo $hotel_name; ?></b></p>
+                                                        <p class="card-text">Hotel location: <b><?php echo $hotel_loc; ?></b></p>
+                                                        <p class="card-text">Hotel contact: <b><?php echo $hotel_contact; ?></b></p>
+                                                        <p class="card-text">Room type: <b><?php echo $room_type; ?></b></p>
+                                                        <p class="card-text">Room number: <b><?php echo $room_num; ?></b></p>
+                                                        <p class="card-text">Room price: <b><?php echo $room_price; ?></b></p>
+                                                        <p class="card-text">Book date: <b><?php echo $book_date; ?></b></p>
+                                                        <p class="card-text">Payment method: <b><?php echo $payment_meth; ?></b></p>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <?php
+                                    }
+                                }else{
+                                    die("FATAL ERROR");
+                                }
+                                
+                                $conn->close();
+                            ?>
+                        </div>
                     </div>
                 </div>
             </div>

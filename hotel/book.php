@@ -20,14 +20,17 @@
 
             $room_id = $_GET["room_id"];
             $hotel_id = $_GET["hotel_id"];
+            $user_id = $_SESSION["userID"];
 
             $conn = mysqli_connect("localhost", "root", "", "hotel");
 
             if($conn){
                 $sql = "SELECT * FROM ROOM WHERE ROOM_ID = '$room_id'";
                 $sql2 = "SELECT HOTEL_NAME, HOTEL_LOC FRoM HOTEL WHERE HOTEL_ID = '$hotel_id'";
+                $sql3 = "SELECT ACC_STAT FROM USER WHERE USER_ID = '$user_id'";
                 $result = $conn->query($sql);
                 $result2 = $conn->query($sql2);
+                $result3 = $conn->query($sql3);
 
                 while($row = $result->fetch_assoc()){
                     $room_type = $row["ROOM_TYPE"];
@@ -39,6 +42,10 @@
                     while($row_2 = $result2->fetch_assoc()){
                         $hotel_name = $row_2["HOTEL_NAME"];
                         $hotel_loc = $row_2["HOTEL_LOC"];
+
+                        while($row_3 = $result3->fetch_assoc()){
+                            $status = $row_3["ACC_STAT"];
+                        }
                     }
                 }
             }else{
@@ -46,6 +53,12 @@
             }
 
             $conn->close();
+
+            echo $status;
+
+            if($status == 1){
+                header("location: blacklist.php");
+            }
         ?>
         <main class="container">
             <div class="container">
@@ -68,7 +81,7 @@
                                         <p class="card-text">Room number: <span class="badge badge-info"><?php echo $room_num; ?></span></p>
                                         <p class="card-text">Room availability: <span class="badge badge-success"><?php echo $room_avai; ?></span></p>
                                         <p class="card-text">Room price: <b>RM <?php echo $room_price; ?></b></p>
-                                        <a href="payment.php" class="btn btn-primary" data-toggle="tooltip" data-placement="right" title="By clicking Book now, 
+                                        <a href="payment.php?room_id=<?=$room_id?>&hotel_id=<?=$hotel_id?>" class="btn btn-primary" data-toggle="tooltip" data-placement="right" title="By clicking Book now, 
                                         you will be redirected to the payment page">Book now</a>
                                     </div>
                                 </div>
