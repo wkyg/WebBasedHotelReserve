@@ -12,38 +12,28 @@
         <link rel="icon" type="image/png" sizes="32x32" href="images/favicon-32x32.png">
         <link rel="icon" type="image/png" sizes="16x16" href="images/favicon-16x16.png">
         <link rel="manifest" href="images/site.webmanifest">
-        <title>Check out</title>
+        <title>Cancel book</title>
     </head>
     <body>
         <?php 
             include_once "header.php";
 
+            $book_id = $_GET["book_id"];
             $room_id = $_GET["room_id"];
-            $hotel_id = $_GET["hotel_id"];
-            $pay_method = $_GET["pay_method"];
-            $user_id = $_GET["user_id"];
-
-            if($pay_method == "payatcounter"){
-                $pay_method = "Pay at counter";
-            }else{
-                $pay_method = "Bank in";
-            }
 
             print_r($_SESSION);
-
-            echo $room_id.$hotel_id.$pay_method.$user_id;
 
             $conn = mysqli_connect("localhost", "root", "", "hotel");
 
             if($conn){
-                $sql = "INSERT INTO BOOKING (BOOK_ID, HOTEL_ID, ROOM_ID, BOOK_DATE, PAYMENT_TYPE, USER_ID) VALUES ('', '$hotel_id', '$room_id', now(), '$pay_method', '$user_id')";
-                $sql2 = "UPDATE ROOM SET ROOM_AVAI = 'no' WHERE ROOM_ID = '$room_id'";
+                $sql = "DELETE FROM BOOKING WHERE BOOK_ID = '$book_id'";
+                $sql2 = "UPDATE ROOM SET ROOM_AVAI = 'yes' WHERE ROOM_ID = '$room_id'";
 
                 if(mysqli_query($conn, $sql)){
-                    echo "book success";
+                    echo "Booking successfully cancelled";
                     if(mysqli_query($conn, $sql2)){
                         echo "update success";
-                        header("location: bookSuccess.php");
+                        header("location: cancelSuccess.php");
                     }else{
                         echo "update fail";
                     }

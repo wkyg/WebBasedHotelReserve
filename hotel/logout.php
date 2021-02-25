@@ -6,6 +6,7 @@
     $_SESSION["logged"] = FALSE;
     $_SESSION["user"] = "";
     $_SESSION["userID"] = "";
+    $_SESSION["accType"] = "";
 
     header("location: index.php");
     exit();

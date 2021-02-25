@@ -80,45 +80,87 @@
                     $_SESSION["logged"] = TRUE;
                     $_SESSION["user"] = $user;
                     $_SESSION["userID"] = $tempUserID;
-                    header("Location: loginSuccess.php");
-                    exit();
+                    $_SESSION["accType"] = 1; //user
+                    //header("Location: loginSuccess.php");
+                    //exit();  
+                    break;
                 }else{
-                    echo "no". "</br>";
-                }
+                    echo "no user". "</br>";
+                    //echo '<script>alert("wrong")</script>'; 
+                    //header("Location: loginFail.php");
+                    //exit();
+                }              
             }        
         }
-
+        
         if(mysqli_query($conn, $sql_2)){
             while($row = $result_2->fetch_assoc()) {
+                $tempUserID = $row["HOTELIER_ID"];
                 $tempUser = $row["HOTELIER_NAME"];
                 $tempPass = $row["HOTELIER_PASS"];
+                if (password_verify("$pass", "$tempPass")){
+                    //echo "yes"."</br>";
+                    $cryptFlag = TRUE;
+                }else{
+                    //echo "no"."</br>";
+                    $cryptFlag = FALSE;
+                }
                 if ($user == $tempUser && $cryptFlag == TRUE){
                     echo "yes Hotelier". "</br>";
-                    header("Location: loginSuccess.php");
-                    exit();
+                    $_SESSION["logged"] = TRUE;
+                    $_SESSION["user"] = $user;
+                    $_SESSION["userID"] = $tempUserID;
+                    $_SESSION["accType"] = 2; //hotelier
+                    //header("Location: loginSuccess.php");
+                    //exit();
+                    break;
                 }else{
-                    echo "no". "</br>";
+                    echo "no hotelier". "</br>";
+                    //header("Location: loginFail.php");
+                    //exit();
                 }
             }        
         }
 
         if(mysqli_query($conn, $sql_3)){
             while($row = $result_3->fetch_assoc()) {
+                $tempUserID = $row["ADMIN_ID"];
                 $tempUser = $row["ADMIN_NAME"];
                 $tempPass = $row["ADMIN_PASS"];
+                if (password_verify("$pass", "$tempPass")){
+                    //echo "yes"."</br>";
+                    $cryptFlag = TRUE;
+                }else{
+                    //echo "no"."</br>";
+                    $cryptFlag = FALSE;
+                }
                 if ($user == $tempUser && $cryptFlag == TRUE){
                     echo "yes Admin". "</br>";
-                    header("Location: loginSuccess.php");
-                    exit();
+                    $_SESSION["logged"] = TRUE;
+                    $_SESSION["user"] = $user;
+                    $_SESSION["userID"] = $tempUserID;
+                    $_SESSION["accType"] = 0; //admin
+                    //header("Location: loginSuccess.php");
+                    //exit();
+                    break;
                 }else{
-                    echo "no". "</br>";
+                    echo "no admin". "</br>";
+                    //header("Location: loginFail.php");
+                    //exit();
                 }
             }        
         }
+        
         //until here
     }else{
         die("FATAL ERROR");
     }
 
     $conn->close();
+
+    if($_SESSION["logged"] == TRUE){
+        header("Location: loginSuccess.php");
+    }else{
+        header("Location: loginFail.php");
+    }
 ?>

@@ -20,14 +20,14 @@
     //echo $cryptPass;
     
     if($conn){
-        $sql = "INSERT INTO USER (USER_ID, USER_NAME, USER_PASS, USER_EMAIL, ACC_TYPE, ACC_STAT, ADMIN_ID) VALUES ('', '$user', '$cryptPass', '$mail', '1', '0', '1')";
-        $sql_2 = "SELECT USER_NAME, USER_EMAIL FROM USER";
+        $sql = "INSERT INTO HOTELIER (HOTELIER_ID, HOTELIER_NAME, HOTELIER_PASS, HOTELIER_EMAIL, ACC_TYPE, ACC_STAT, ADMIN_ID) VALUES ('', '$user', '$cryptPass', '$mail', '2', '0', '1')";
+        $sql_2 = "SELECT HOTELIER_NAME, HOTELIER_EMAIL FROM HOTELIER";
         $result = $conn->query($sql_2);
 
         if(mysqli_query($conn, $sql_2)){
             while($row = $result->fetch_assoc()) {
-                $tempUser = $row["USER_NAME"];
-                $tempMail = $row["USER_EMAIL"];
+                $tempUser = $row["HOTELIER_NAME"];
+                $tempMail = $row["HOTELIER_EMAIL"];
                 //echo $tempUser."--database</br>";
                 //echo $tempMail."--database</br>";
                 if (($user == $tempUser && $mail == $tempMail) || ($user != $tempUser && $mail == $tempMail)
@@ -53,7 +53,7 @@
                     header("Location: registerSuccess.php");
                     exit();
                 }else{
-                    echo "Conformation failed";                    
+                    //echo "Conformation failed";                    
                 }
             }else{
                 echo "ERROR";

@@ -30,37 +30,39 @@
                 </div>
                 <!--Form box-->
                 <!--Username and password-->
-                <form action="register.php" method="POST">
+                <form action="registerHotel.php" method="POST">
                     <div class="row">
                         <div class="col-lg">
                             <div class="form-group">
-                                <input type="email" class="form-control form-control-lg" id="searchForm" name="email" placeholder="Email" required>
+                                <input type="email" class="form-control form-control-lg" id="email" name="email" placeholder="Email" 
+                                data-toggle="popover" title="Email is taken" data-content="Consider login?" required>
                             </div>
                             <div class="form-group">
-                                <input type="text" class="form-control form-control-lg" id="searchForm" name="username" placeholder="Username" required>
+                                <input type="text" class="form-control form-control-lg" id="username" name="username" placeholder="Username" required>
                             </div>
                             <div class="form-group">
-                                <input type="password" class="form-control form-control-lg" id="searchForm" name="password" placeholder="Password" required>
+                                <input type="password" class="form-control form-control-lg" id="password" name="password" placeholder="Password" required>
                             </div>
                             <div class="form-group">
-                                <input type="password" class="form-control form-control-lg" id="searchForm" name="rePass" placeholder="Re-enter password" required>
+                                <input type="password" class="form-control form-control-lg" id="rePass" name="rePass" placeholder="Re-enter password" 
+                                data-toggle="popover" title="Password does not match?" data-content="Please enter the same password as above" required>
+                                <div class="badge bg-light text-wrap" id="message" style="width: 6rem;"></div>
                             </div>
                             <div class="checkbox mb-3 text-white">
                                 <label>
-                                    <input type="checkbox" value="remember-me" required> I agree to the <a class="text-white font-italic badge badge-primary text-wrap" href="#">term and condition</a>
+                                    <input type="checkbox" value="remember-me" required> I agree to the <a class="text-white font-italic badge badge-primary text-wrap" href="tnc.html">term and condition</a>
                                 </label>
                             </div>
                         </div>
                     </div>
-                    <!--Search button-->
+                    <!--Register button-->
                     <div class="row">
                         <div class="col-sm">
                             <div class="form-group">
-                                <button type="submit" class="btn btn-light btn-lg btn-block ">Register</button>
-                                <a class="text-white font-italic badge badge-primary text-wrap" href="register.html">User? Register here</a>
-                                <!--<button type="button" class="btn btn-lg btn-danger" data-toggle="popover" title="Popover title" data-content="And here's some amazing content. It's very engaging. Right?">Click to toggle popover</button>>
-                                -->
+                                <button type="submit" id="submit" class="btn btn-light btn-lg btn-block">Register</button>
+                                <a class="text-white font-italic badge badge-primary text-wrap" href="registerPage.php">User? Register here</a>
                             </div>
+                        </div>
                     </div>
                 </form>
             </div>
@@ -69,9 +71,20 @@
             include_once "footer.php";
         ?>
         <script>
-            $(function () {
-                $('[data-toggle="popover"]').popover()
-            })
+            $('#password, #rePass').on('keyup', function () {
+                $('#rePass').popover('disable')
+
+                document.getElementById("submit").disabled = true
+
+                if ($('#password').val() == $('#rePass').val()) {
+                    $('#rePass').popover('hide')
+                    document.getElementById("submit").disabled = false
+                    
+                } else if($('#password').val() != $('#rePass').val())  {
+                    $('#rePass').popover('enable')
+                    $('#rePass').popover('show') 
+                }  
+            });
         </script>
     </body>
 </html>

@@ -18,7 +18,7 @@
         <?php 
             include_once "header.php";
 
-            print_r($_SESSION);
+            //print_r($_SESSION);
 
             if($_SESSION["logged"] == FALSE){
                 header("location: loginPage.php");
@@ -86,35 +86,35 @@
                                             <h5 class="card-title">Full name</h5>
                                             <div class="row">
                                                 <div class="col-lg">
-                                                    <input type="text" class="form-control" name="firstName" id="f-name" placeholder="First name">
+                                                    <input type="text" class="form-control" name="firstName" id="f-name" placeholder="First name" required>
                                                 </div>
                                                 <div class="col-lg">
-                                                    <input type="text" class="form-control" name="lastName" id="l-name" placeholder="Last name">
+                                                    <input type="text" class="form-control" name="lastName" id="l-name" placeholder="Last name" required>
                                                 </div>
                                             </div> 
                                         </div>
                                         <div class="form-group">
                                             <h5 class="card-title">Email</h5>
-                                            <input type="email" class="form-control" name="email" id="email" placeholder="Email">
+                                            <input type="email" class="form-control" name="email" id="email" placeholder="Email" required>
                                         </div>
                                         <div class="form-group">
                                             <h5 class="card-title">Re-enter email</h5>
                                             <input type="email" class="form-control" name="re-email" id="re-email" placeholder="Re-enter email" 
-                                            data-toggle="popover" title="Email does not match?" data-content="Please enter the same email as above">
+                                            data-toggle="popover" title="Email does not match?" data-content="Please enter the same email as above" required>
                                         </div>
                                         <div class="form-group">
                                             <h5 class="card-title">Contact number</h5>
-                                            <input type="text" class="form-control" name="con-num" id="con-num" placeholder="Contact number">
+                                            <input type="text" class="form-control" name="con-num" id="con-num" placeholder="Contact number" required>
                                         </div>
                                         <h5 class="card-title">Payment method</h5>
                                         <div class="form-check">
-                                            <input class="form-check-input" type="radio" name="payment" id="pay-front" value="payatcounter">
+                                            <input class="form-check-input" type="radio" name="payment" id="pay-front" value="payatcounter" required>
                                             <label class="form-check-label" for="pay-front">
                                                 Pay at front desk
                                             </label>
                                         </div>
                                         <div class="form-check mb-3">
-                                            <input class="form-check-input" type="radio" name="payment" id="pay-bank" value="banktrans">
+                                            <input class="form-check-input" type="radio" name="payment" id="pay-bank" value="banktrans" required>
                                             <label class="form-check-label" for="pay-bank">
                                                 Online bank transfer
                                             </label>

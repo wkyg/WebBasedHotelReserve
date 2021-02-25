@@ -90,7 +90,7 @@
                                 <div class="card-body">
                                     <?php
                                         if($pay_method == "payatcounter"){?>
-                                            <form action="confirmBook.php?room_id=<?=$room_id?>&hotel_id=<?=$hotel_id?>&pay_method=<?=$pay_method?>" method=POST>
+                                            <form action="mailConfirmBook.php?room_id=<?=$room_id?>&hotel_id=<?=$hotel_id?>&pay_method=<?=$pay_method?>" method=POST>
                                                 <div class="form-group">
                                                     <h3 class="card-title">Entered details</h3>
                                                     <h5 class="card-title">Full name</h5>

@@ -18,6 +18,10 @@
         <?php
             include_once "header.php";
 
+            if($_SESSION["logged"] == FALSE){
+                header("location: loginPage.php");
+            }
+
             $room_id = $_GET["room_id"];
             $hotel_id = $_GET["hotel_id"];
             $user_id = $_SESSION["userID"];

@@ -8,12 +8,12 @@
         <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/css/bootstrap.min.css" 
         integrity="sha384-TX8t27EcRE3e/ihU7zmQxVncDAy5uIKz4rEkgIXeMed4M0jlfIDPvg6uqKI2xXr2" crossorigin="anonymous">
         <!--Local CSS-->
-        <link rel="stylesheet" type=text/css href="css/registerStyle.css">
+        <link rel="stylesheet" type=text/css href="css/registerAdminStyle.css">
         <link rel="apple-touch-icon" sizes="180x180" href="images/apple-touch-icon.png">
         <link rel="icon" type="image/png" sizes="32x32" href="images/favicon-32x32.png">
         <link rel="icon" type="image/png" sizes="16x16" href="images/favicon-16x16.png">
         <link rel="manifest" href="images/site.webmanifest">
-        <title>Register</title>
+        <title>Admin</title>
     </head>
     <body>
         <?php
@@ -25,12 +25,12 @@
                 <div class="row">
                     <div class="col-lg">
                         <img src="images/logo.png" class="mw-100" alt="logo">
-                        <h1 class="h3 mb-3 font-weight-normal text-white">Register here</h1>
+                        <h1 class="h3 mb-3 font-weight-normal text-white">Hi Admin</h1>
                     </div>
                 </div>
                 <!--Form box-->
                 <!--Username and password-->
-                <form action="register.php" method="POST">
+                <form action="registerAdminstrator.php" method="POST">
                     <div class="row">
                         <div class="col-lg">
                             <div class="form-group">
@@ -47,20 +47,14 @@
                                 <input type="password" class="form-control form-control-lg" id="rePass" name="rePass" placeholder="Re-enter password" 
                                 data-toggle="popover" title="Password does not match?" data-content="Please enter the same password as above" required>
                                 <div class="badge bg-light text-wrap" id="message" style="width: 6rem;"></div>
-                            </div>
-                            <div class="checkbox mb-3 text-white">
-                                <label>
-                                    <input type="checkbox" value="remember-me" required> I agree to the <a class="text-white font-italic badge badge-primary text-wrap" href="tnc.html">term and condition</a>
-                                </label>
-                            </div>
+                            </div>                            
                         </div>
                     </div>
                     <!--Register button-->
                     <div class="row">
                         <div class="col-sm">
                             <div class="form-group">
-                                <button type="submit" id="submit" class="btn btn-light btn-lg btn-block">Register</button>
-                                <a class="text-white font-italic badge badge-primary text-wrap" href="registerHotelier.php">Hotelier? Register here</a>
+                                <button type="submit" id="submit" class="btn btn-light btn-lg btn-block">Register</button>                                
                             </div>
                         </div>
                     </div>

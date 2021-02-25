@@ -18,6 +18,8 @@
     <body>
         <?php
             include_once "header.php";
+            
+            //echo "Hotelierrrrrrr";
         ?>
         <main class="container">
             <ul class="nav nav-pills mb-3" id="pills-tab" role="tablist">
@@ -28,7 +30,10 @@
                     <a class="nav-link text-white" id="pills-profile-tab" data-toggle="pill" href="#pills-profile" role="tab" aria-controls="pills-profile" aria-selected="false">Profile</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link text-white" id="pills-contact-tab" data-toggle="pill" href="#pills-booking" role="tab" aria-controls="pills-contact" aria-selected="false">Bookings</a>
+                    <a class="nav-link text-white" id="pills-contact-tab" data-toggle="pill" href="#pills-user" role="tab" aria-controls="pills-contact" aria-selected="false">Manage Users</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link text-white" id="pills-contact-tab" data-toggle="pill" href="#pills-hotelier" role="tab" aria-controls="pills-contact" aria-selected="false">Manage Hoteliers</a>
                 </li>
             </ul>
             <div class="tab-content" id="pills-tabContent">
@@ -54,52 +59,13 @@
                                                 $conn = mysqli_connect("localhost", "root", "", "hotel");
     
                                                 if($conn){
-                                                    $sql = "SELECT USER_EMAIL, ACC_STAT FROM USER WHERE USER_ID = '$current_user_id'";
+                                                    $sql = "SELECT ADMIN_EMAIL FROM ADMIN WHERE ADMIN_ID = '$current_user_id'";
                                                     $result = $conn->query($sql);
     
                                                     while($row = $result->fetch_assoc()){
-                                                        $user_email = $row["USER_EMAIL"];
+                                                        $user_email = $row["ADMIN_EMAIL"];
                                                         
                                                         echo $user_email;
-                                                    }
-                                                }else{
-                                                    die("FATAL ERROR");
-                                                }
-                                                $conn->close();
-                                            ?>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <h3 class="card-title">Account status</h3>
-                            <div class="row">
-                                <div class="col-lg">
-                                    <div class="card">
-                                        <div class="card-body">
-                                            <?php
-                                                $current_user_id = $_SESSION["userID"];
-                                                $conn = mysqli_connect("localhost", "root", "", "hotel");
-    
-                                                if($conn){
-                                                    $sql2 = "SELECT ACC_STAT FROM USER WHERE USER_ID = '$current_user_id'";
-                                                    $sql3 = "SELECT ADMIN_EMAIL FROM ADMIN WHERE ADMIN_ID = 2";
-                                                    $result2 = $conn->query($sql2);
-                                                    $result3 = $conn->query($sql3);
-    
-                                                    while($row_2 = $result2->fetch_assoc()){
-                                                        $user_stat = $row_2["ACC_STAT"];
-                                                        
-                                                        while($row_3 = $result3->fetch_assoc()){
-                                                            $admin_email = $row_3["ADMIN_EMAIL"];
-                                                            
-                                                            if($user_stat == 0){
-                                                                echo "Normal, enjoy your stay";
-                                                            }else{
-                                                                echo "Blacklisted, please contact the admin</br>";
-                                                                echo "Admin email: ";?>
-                                                                <b><?php echo $admin_email ?></b><?php
-                                                            }
-                                                        }
                                                     }
                                                 }else{
                                                     die("FATAL ERROR");
@@ -113,10 +79,10 @@
                         </div>
                     </div>
                 </div>
-                <div class="tab-pane fade" id="pills-booking" role="tabpanel" aria-labelledby="pills-contact-tab">
+                <div class="tab-pane fade" id="pills-user" role="tabpanel" aria-labelledby="pills-contact-tab">
                     <div class="card">
                         <div class="card-header">
-                            <h3 class="card-title">Your bookings</h3>
+                            <h3 class="card-title">Manage Users</h3>
                         </div>
                         <div class="card-body">
                             <?php 
@@ -124,37 +90,70 @@
                                 $conn = mysqli_connect("localhost", "root", "", "hotel");
 
                                 if($conn){
-                                    $sql4 = "SELECT * FROM HOTEL_USER_BOOK WHERE USER_ID = '$current_user_id'";
+                                    $sql4 = "SELECT * FROM USER";
                                     $result4 = $conn->query($sql4);
 
                                     while($row_4 = $result4->fetch_assoc()){
-                                        $book_id = $row_4["BOOK_ID"];
-                                        $room_id = $row_4["ROOM_ID"];
-                                        $hotel_name = $row_4["HOTEL_NAME"];
-                                        $hotel_loc = $row_4["HOTEL_LOC"];
-                                        $hotel_contact = $row_4["CONTACT"];
-                                        $room_type = $row_4["ROOM_TYPE"];
-                                        $room_num = $row_4["ROOM_NUMBER"];
-                                        $room_price = $row_4["ROOM_PRICE"];
-                                        $room_img = $row_4["ROOM_IMG"];
-                                        $book_date = $row_4["BOOK_DATE"];
-                                        $payment_meth = $row_4["PAYMENT_TYPE"];?>
+                                        $user_id = $row_4["USER_ID"];
+                                        $user_name = $row_4["USER_NAME"];
+                                        $user_email = $row_4["USER_EMAIL"];
+                                        $user_stat = $row_4["ACC_STAT"];?>
 
                                         <div class="row mb-3">               
                                             <div class="col-lg">
                                                 <div class="card">
                                                     <div class="card-body">
-                                                        <p class="card-text">Booking ID: <b><?php echo $book_id; ?></b></p>
-                                                        <p class="card-text">Hotel name: <b><?php echo $hotel_name; ?></b></p>
-                                                        <p class="card-text">Hotel location: <b><?php echo $hotel_loc; ?></b></p>
-                                                        <p class="card-text">Hotel contact: <b><?php echo $hotel_contact; ?></b></p>
-                                                        <p class="card-text">Room type: <b><?php echo $room_type; ?></b></p>
-                                                        <p class="card-text">Room number: <b><?php echo $room_num; ?></b></p>
-                                                        <p class="card-text">Room price: <b><?php echo $room_price; ?></b></p>
-                                                        <p class="card-text">Book date: <b><?php echo $book_date; ?></b></p>
-                                                        <p class="card-text">Payment method: <b><?php echo $payment_meth; ?></b></p>
-                                                        <a href="cancelBookMail.php?book_id=<?=$book_id?>&room_id=<?=$room_id?>" class="btn btn-danger" data-toggle="tooltip" data-placement="right" 
-                                                        title="Are you sure you want to cancel?">Cancel booking</a>
+                                                        <p class="card-text">User ID: <b><?php echo $user_id; ?></b></p>
+                                                        <p class="card-text">User name: <b><?php echo $user_name; ?></b></p>
+                                                        <p class="card-text">User email: <b><?php echo $user_email; ?></b></p>
+                                                        <p class="card-text">User status: <b><?php echo $user_stat; ?></b></p>
+                                                        <a href="#" class="btn btn-danger" data-toggle="tooltip" data-placement="right" 
+                                                        title="Are you sure you want to cancel?">Edit infomation</a>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <?php
+                                    }
+                                }else{
+                                    die("FATAL ERROR");
+                                }
+                                
+                                $conn->close();
+                            ?>
+                        </div>
+                    </div>
+                </div>
+                <div class="tab-pane fade" id="pills-hotelier" role="tabpanel" aria-labelledby="pills-contact-tab">
+                    <div class="card">
+                        <div class="card-header">
+                            <h3 class="card-title">Manage Hoteliers</h3>
+                        </div>
+                        <div class="card-body">
+                            <?php 
+                                $current_user_id = $_SESSION["userID"];
+                                $conn = mysqli_connect("localhost", "root", "", "hotel");
+
+                                if($conn){
+                                    $sql4 = "SELECT * FROM Hotelier";
+                                    $result4 = $conn->query($sql4);
+
+                                    while($row_4 = $result4->fetch_assoc()){
+                                        $hotelier_id = $row_4["HOTELIER_ID"];
+                                        $hotelier_name = $row_4["HOTELIER_NAME"];
+                                        $hotelier_email = $row_4["HOTELIER_EMAIL"];
+                                        $hotelier_stat = $row_4["ACC_STAT"];?>
+
+                                        <div class="row mb-3">               
+                                            <div class="col-lg">
+                                                <div class="card">
+                                                    <div class="card-body">
+                                                        <p class="card-text">User ID: <b><?php echo $hotelier_id; ?></b></p>
+                                                        <p class="card-text">User name: <b><?php echo $hotelier_name; ?></b></p>
+                                                        <p class="card-text">User email: <b><?php echo $hotelier_email; ?></b></p>
+                                                        <p class="card-text">User status: <b><?php echo $hotelier_stat; ?></b></p>
+                                                        <a href="#" class="btn btn-danger" data-toggle="tooltip" data-placement="right" 
+                                                        title="Are you sure you want to cancel?">Edit infomation</a>
                                                     </div>
                                                 </div>
                                             </div>

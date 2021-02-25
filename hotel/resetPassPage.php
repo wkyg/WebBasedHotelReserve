@@ -13,7 +13,7 @@
         <link rel="icon" type="image/png" sizes="32x32" href="images/favicon-32x32.png">
         <link rel="icon" type="image/png" sizes="16x16" href="images/favicon-16x16.png">
         <link rel="manifest" href="images/site.webmanifest">
-        <title>Login</title>
+        <title>Reset password</title>
     </head>
     <body>
         <?php
@@ -25,7 +25,7 @@
                 <div class="row">
                     <div class="col-lg">
                         <img src="images/logo.png" class="mw-100" alt="logo">
-                        <h1 class="h3 mb-3 font-weight-normal text-white">Please sign in</h1>
+                        <h1 class="h3 mb-3 font-weight-normal text-white">Please enter your username and email</h1>
                         <!--
                             <img src="images/logo.png" class="mw-100" alt="logo">  
                         -->
@@ -33,30 +33,22 @@
                 </div>
                 <!--Form box-->
                 <!--Username and password-->
-                <form action="login.php" method="POST">
+                <form action="resetPass.php" method="POST">
                     <div class="row">
                         <div class="col-lg">
                             <div class="form-group">
                                 <input type="text" class="form-control form-control-lg" id="searchForm" name="user" placeholder="Username" required>
                             </div>
                             <div class="form-group">
-                                <input type="password" class="form-control form-control-lg" id="searchForm" name="pass" placeholder="Password" required>
-                            </div>
-                            <div class="checkbox mb-3 text-white">
-                                <label>
-                                  <input type="checkbox" value="remember-me"> Remember me
-                                </label>
+                                <input type="email" class="form-control form-control-lg" id="searchForm" name="mail" placeholder="Email" required>
                             </div>
                         </div>
                     </div>
-                    <!--Login button-->
+                    <!--Comfirm button-->
                     <div class="row">
                         <div class="col-sm">
                             <div class="form-group">
-                                <button type="submit" class="btn btn-light btn-lg btn-block">Login</button>
-                            </div>
-                            <div class="form-group">
-                                <a class="text-white font-italic badge badge-primary text-wrap" href="resetPassPage.php">Forgot password?</a>
+                                <button type="submit" class="btn btn-light btn-lg btn-block">Reset</button>
                             </div>
                         </div>
                     </div>

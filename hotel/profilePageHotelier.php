@@ -18,6 +18,8 @@
     <body>
         <?php
             include_once "header.php";
+            
+            echo "Hotelierrrrrrr";
         ?>
         <main class="container">
             <ul class="nav nav-pills mb-3" id="pills-tab" role="tablist">
@@ -28,7 +30,7 @@
                     <a class="nav-link text-white" id="pills-profile-tab" data-toggle="pill" href="#pills-profile" role="tab" aria-controls="pills-profile" aria-selected="false">Profile</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link text-white" id="pills-contact-tab" data-toggle="pill" href="#pills-booking" role="tab" aria-controls="pills-contact" aria-selected="false">Bookings</a>
+                    <a class="nav-link text-white" id="pills-contact-tab" data-toggle="pill" href="#pills-booking" role="tab" aria-controls="pills-contact" aria-selected="false">My Hotels</a>
                 </li>
             </ul>
             <div class="tab-content" id="pills-tabContent">
@@ -54,11 +56,11 @@
                                                 $conn = mysqli_connect("localhost", "root", "", "hotel");
     
                                                 if($conn){
-                                                    $sql = "SELECT USER_EMAIL, ACC_STAT FROM USER WHERE USER_ID = '$current_user_id'";
+                                                    $sql = "SELECT HOTELIER_EMAIL FROM HOTELIER WHERE HOTELIER_ID = '$current_user_id'";
                                                     $result = $conn->query($sql);
     
                                                     while($row = $result->fetch_assoc()){
-                                                        $user_email = $row["USER_EMAIL"];
+                                                        $user_email = $row["HOTELIER_EMAIL"];
                                                         
                                                         echo $user_email;
                                                     }
@@ -81,7 +83,7 @@
                                                 $conn = mysqli_connect("localhost", "root", "", "hotel");
     
                                                 if($conn){
-                                                    $sql2 = "SELECT ACC_STAT FROM USER WHERE USER_ID = '$current_user_id'";
+                                                    $sql2 = "SELECT ACC_STAT FROM HOTELIER WHERE HOTELIER_ID = '$current_user_id'";
                                                     $sql3 = "SELECT ADMIN_EMAIL FROM ADMIN WHERE ADMIN_ID = 2";
                                                     $result2 = $conn->query($sql2);
                                                     $result3 = $conn->query($sql3);
@@ -116,7 +118,7 @@
                 <div class="tab-pane fade" id="pills-booking" role="tabpanel" aria-labelledby="pills-contact-tab">
                     <div class="card">
                         <div class="card-header">
-                            <h3 class="card-title">Your bookings</h3>
+                            <h3 class="card-title">My Hotels</h3>
                         </div>
                         <div class="card-body">
                             <?php 
@@ -124,37 +126,42 @@
                                 $conn = mysqli_connect("localhost", "root", "", "hotel");
 
                                 if($conn){
-                                    $sql4 = "SELECT * FROM HOTEL_USER_BOOK WHERE USER_ID = '$current_user_id'";
+                                    $sql4 = "SELECT * FROM HOTEL WHERE HOTELIER_ID = '$current_user_id'";
                                     $result4 = $conn->query($sql4);
 
                                     while($row_4 = $result4->fetch_assoc()){
-                                        $book_id = $row_4["BOOK_ID"];
-                                        $room_id = $row_4["ROOM_ID"];
+                                        $hotel_id = $row_4["HOTEL_ID"];
                                         $hotel_name = $row_4["HOTEL_NAME"];
+                                        $hotel_star = $row_4["HOTEL_STAR"];
                                         $hotel_loc = $row_4["HOTEL_LOC"];
-                                        $hotel_contact = $row_4["CONTACT"];
-                                        $room_type = $row_4["ROOM_TYPE"];
-                                        $room_num = $row_4["ROOM_NUMBER"];
-                                        $room_price = $row_4["ROOM_PRICE"];
-                                        $room_img = $row_4["ROOM_IMG"];
-                                        $book_date = $row_4["BOOK_DATE"];
-                                        $payment_meth = $row_4["PAYMENT_TYPE"];?>
+                                        $hotel_des = $row_4["HOTEL_DES"];
+                                        $hotel_info = $row_4["HOTEL_INFO"];
+                                        $hotel_check_in = $row_4["CHECK_IN"];
+                                        $hotel_check_out = $row_4["CHECK_OUT"];
+                                        $hotel_price = $row_4["HOTEL_PRICE"];
+                                        $hotel_img = $row_4["HOTEL_IMG"];
+                                        $hotel_detail = $row_4["HOTEL_DETAIL"];
+                                        $hotel_address = $row_4["ADDRESS"];
+                                        $hotel_contact = $row_4["CONTACT"]?>
 
                                         <div class="row mb-3">               
                                             <div class="col-lg">
                                                 <div class="card">
                                                     <div class="card-body">
-                                                        <p class="card-text">Booking ID: <b><?php echo $book_id; ?></b></p>
+                                                        <p class="card-text">Hotel ID: <b><?php echo $hotel_id; ?></b></p>
                                                         <p class="card-text">Hotel name: <b><?php echo $hotel_name; ?></b></p>
+                                                        <p class="card-text">Hotel star: <b><?php echo $hotel_star; ?></b></p>
                                                         <p class="card-text">Hotel location: <b><?php echo $hotel_loc; ?></b></p>
+                                                        <p class="card-text">Hotel description: <b><?php echo $hotel_des; ?></b></p>
+                                                        <p class="card-text">Hotel information: <b><?php echo $hotel_info; ?></b></p>
+                                                        <p class="card-text">Hotel check-in time: <b><?php echo $hotel_check_in; ?></b></p>
+                                                        <p class="card-text">Hotel check-out time: <b><?php echo $hotel_check_out; ?></b></p>
+                                                        <p class="card-text">Hotel price: <b><?php echo $hotel_price; ?></b></p>
+                                                        <p class="card-text">Hotel detail: <b><?php echo $hotel_detail; ?></b></p>
+                                                        <p class="card-text">Hotel address: <b><?php echo $hotel_address; ?></b></p>
                                                         <p class="card-text">Hotel contact: <b><?php echo $hotel_contact; ?></b></p>
-                                                        <p class="card-text">Room type: <b><?php echo $room_type; ?></b></p>
-                                                        <p class="card-text">Room number: <b><?php echo $room_num; ?></b></p>
-                                                        <p class="card-text">Room price: <b><?php echo $room_price; ?></b></p>
-                                                        <p class="card-text">Book date: <b><?php echo $book_date; ?></b></p>
-                                                        <p class="card-text">Payment method: <b><?php echo $payment_meth; ?></b></p>
-                                                        <a href="cancelBookMail.php?book_id=<?=$book_id?>&room_id=<?=$room_id?>" class="btn btn-danger" data-toggle="tooltip" data-placement="right" 
-                                                        title="Are you sure you want to cancel?">Cancel booking</a>
+                                                        <a href="#" class="btn btn-danger" data-toggle="tooltip" data-placement="right" 
+                                                        title="Are you sure you want to cancel?">Edit infomation</a>
                                                     </div>
                                                 </div>
                                             </div>
