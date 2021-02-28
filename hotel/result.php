@@ -24,6 +24,8 @@
             $adults = $_SESSION["adults_result"];
             $children = $_SESSION["children_result"];
             $room = $_SESSION["room_result"];
+
+            //print_r($_SESSION);
         ?>
         <main class="container text-center">
             <div class="container">
@@ -40,26 +42,26 @@
                         <div class="form-group">
                             <form action="search.php" method="GET">
                                 <div class="input-group">
-                                    <input type="text" class="form-control form-control-lg rounded-0" name="search" id="searchForm" placeholder="Location">
-                                    <input type="text" class="form-control form-control-lg rounded-0" name="datein" placeholder="Date-in" onfocus="(this.type='date')" onblur="(this.type='text')">
-                                    <input type="text" class="form-control form-control-lg rounded-0" name="dateout" placeholder="Date-out" onfocus="(this.type='date')" onblur="(this.type='text')">
+                                    <input type="text" class="form-control form-control-lg rounded-0" name="search" id="searchForm" placeholder="Location" value="<?php echo $search ?>">
+                                    <input type="text" class="form-control form-control-lg rounded-0" name="datein" placeholder="Date-in" value="<?php echo $datein?>" onfocus="(this.type='date')" onblur="(this.type='text')">
+                                    <input type="text" class="form-control form-control-lg rounded-0" name="dateout" placeholder="Date-out" value="<?php echo $dateout ?>" onfocus="(this.type='date')" onblur="(this.type='text')">
                                     <button class="btn btn-light dropdown-toggle rounded-0 rounded-0" type="button" data-toggle="dropdown" aria-expanded="false">More option</button>
                                     <ul class="dropdown-menu dropdown-menu-end">
                                         <li>
                                             <div class="col-sm">
                                                 <div class="form-group">
                                                     <div class="input-group">
-                                                        <input type="number" class="form-control form-control-lg" name="adults" placeholder="Adults" id="stepper_0" name="adults" step="1" min="0">
+                                                        <input type="number" class="form-control form-control-lg" name="adults" placeholder="Adults" value="<?php echo $adults ?>" id="stepper_0" name="adults" step="1" min="0">
                                                     </div>                                                    
                                                 </div>
                                                 <div class="form-group">                                                 
                                                     <div class="input-group">
-                                                        <input type="number" class="form-control form-control-lg" name="children" placeholder="Children" id="stepper_1" name="children" step="1" min="0">
+                                                        <input type="number" class="form-control form-control-lg" name="children" placeholder="Children" value="<?php echo $children ?>" id="stepper_1" name="children" step="1" min="0">
                                                     </div>
                                                 </div>
                                                 <div class="form-group">
                                                     <div class="input-group">
-                                                        <input type="number" class="form-control form-control-lg" name="room" placeholder="Room" id="stepper_2" name="room" step="1" min="0">     
+                                                        <input type="number" class="form-control form-control-lg" name="room" placeholder="Room" value="<?php echo $room ?>" id="stepper_2" name="room" step="1" min="0">     
                                                     </div>
                                                 </div>
                                             </div>

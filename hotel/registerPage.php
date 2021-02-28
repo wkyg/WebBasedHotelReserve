@@ -50,7 +50,7 @@
                             </div>
                             <div class="checkbox mb-3 text-white">
                                 <label>
-                                    <input type="checkbox" value="remember-me" required> I agree to the <a class="text-white font-italic badge badge-primary text-wrap" href="tnc.html">term and condition</a>
+                                    <input type="checkbox" value="remember-me" required> I agree to the <a class="text-white font-italic badge badge-primary text-wrap" href="tnc.php">term and condition</a>
                                 </label>
                             </div>
                         </div>

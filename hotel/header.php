@@ -1,5 +1,10 @@
 <?php
     session_start();
+    if(!isset($_SESSION["logged"])){
+        $_SESSION["logged"] = "";
+    }else{}
+
+    date_default_timezone_set("Asia/Kuala_Lumpur");
 ?>
 <header class="container">
     <div class="container">

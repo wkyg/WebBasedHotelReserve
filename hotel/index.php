@@ -17,7 +17,14 @@
     </head>
     <body>
         <?php
-            include_once "header.php";
+            include_once "header.php";            
+            
+            $curr_date = date("Y-m-d");
+            //echo $curr_date;
+            $curr_date_rep = str_replace('-', '/', $curr_date);
+            $curr_date_tmr = date('Y-m-d',strtotime($curr_date_rep . "+1 days"));
+
+            //echo $curr_date_tmr;
         ?>
         <main class="container text-center">
             <form action="search.php" method="GET">
@@ -47,13 +54,13 @@
                         <div class="col-sm">
                             <div class="form-group">
                                 <!--<input type="date" class="form-control form-control-lg" placeholder="Date-in">-->
-                                <input type="text" class="form-control form-control-lg" name="datein" placeholder="Check in date" onfocus="(this.type='date')" onblur="(this.type='text')" >
+                                <input type="text" class="form-control form-control-lg" name="datein" placeholder="Check in date" onfocus="(this.type='date')" onblur="(this.type='text')" min="<?php echo $curr_date ?>" required>
                             </div>
                         </div>
                         <div class="col-sm">
                             <div class="form-group">
                                 <!--<input type="date" class="form-control form-control-lg">-->
-                                <input type="text" class="form-control form-control-lg" name="dateout" placeholder="Check out date" onfocus="(this.type='date')" onblur="(this.type='text')" >
+                                <input type="text" class="form-control form-control-lg" name="dateout" placeholder="Check out date" onfocus="(this.type='date')" onblur="(this.type='text')" min="<?php echo $curr_date_tmr ?>" required>
                             </div>
                         </div>
                     </div>
