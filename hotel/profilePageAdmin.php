@@ -106,9 +106,16 @@
                                                         <p class="card-text">User ID: <b><?php echo $user_id; ?></b></p>
                                                         <p class="card-text">User name: <b><?php echo $user_name; ?></b></p>
                                                         <p class="card-text">User email: <b><?php echo $user_email; ?></b></p>
-                                                        <p class="card-text">User status: <b><?php echo $user_stat; ?></b></p>
-                                                        <a href="#" class="btn btn-danger" data-toggle="tooltip" data-placement="right" 
-                                                        title="Are you sure you want to cancel?">Edit infomation</a>
+                                                        <p class="card-text">User status: 
+                                                            <?php
+                                                                if($user_stat == 0){?>
+                                                                    <span class="badge badge-success">Normal</span><?php
+                                                                }else{?>
+                                                                    <span class="badge badge-danger">Blacklisted</span><?php
+                                                                }
+                                                            ?>
+                                                        </p>
+                                                        <a href="editUserInfo.php?user_id=<?=$user_id?>" class="btn btn-danger">Edit infomation</a>
                                                     </div>
                                                 </div>
                                             </div>
@@ -152,8 +159,7 @@
                                                         <p class="card-text">User name: <b><?php echo $hotelier_name; ?></b></p>
                                                         <p class="card-text">User email: <b><?php echo $hotelier_email; ?></b></p>
                                                         <p class="card-text">User status: <b><?php echo $hotelier_stat; ?></b></p>
-                                                        <a href="#" class="btn btn-danger" data-toggle="tooltip" data-placement="right" 
-                                                        title="Are you sure you want to cancel?">Edit infomation</a>
+                                                        <a href="#" class="btn btn-danger">Edit infomation</a>
                                                     </div>
                                                 </div>
                                             </div>

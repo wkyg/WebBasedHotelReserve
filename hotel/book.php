@@ -18,6 +18,8 @@
         <?php
             include_once "header.php";
 
+            //print_r($_SESSION);
+
             if($_SESSION["logged"] == FALSE){
                 header("location: loginPage.php");
             }
@@ -58,7 +60,7 @@
 
             $conn->close();
 
-            echo $status;
+            //echo $status;
 
             if($status == 1){
                 header("location: blacklist.php");
@@ -84,7 +86,7 @@
                                         <p class="card-text">Room type: <?php echo $room_type; ?></p>
                                         <p class="card-text">Room number: <span class="badge badge-info"><?php echo $room_num; ?></span></p>
                                         <p class="card-text">Room availability: <span class="badge badge-success"><?php echo $room_avai; ?></span></p>
-                                        <p class="card-text">Room price: <b>RM <?php echo $room_price; ?></b></p>
+                                        <p class="card-text">Room price: <b>RM <?php echo $room_price; ?></b> / per night</p>
                                         <a href="payment.php?room_id=<?=$room_id?>&hotel_id=<?=$hotel_id?>" class="btn btn-primary" data-toggle="tooltip" data-placement="right" title="By clicking Book now, 
                                         you will be redirected to the payment page">Book now</a>
                                     </div>

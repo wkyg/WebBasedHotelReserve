@@ -26,8 +26,10 @@
             $room_id = $_GET["room_id"];
             $hotel_id = $_GET["hotel_id"];
             $pay_method = $_GET["pay_method"];
+            $check_in = $_GET["check_in"];
+            $check_out = $_GET["check_out"];
 
-            $link = "http://localhost/WebBasedHotelReserve/hotel/confirmBook.php?room_id=$room_id&hotel_id=$hotel_id&pay_method=$pay_method&user_id=$user_id";
+            $link = "http://localhost/WebBasedHotelReserve/hotel/confirmBook.php?room_id=$room_id&hotel_id=$hotel_id&pay_method=$pay_method&user_id=$user_id&check_in=$check_in&check_out=$check_out";
 
             //echo "</br>".$user.$user_id;
 

@@ -139,6 +139,7 @@
                                 </div>
                                 <div class="card-body text-right">
                                     <h3 class="card-title"><?php echo 'RM '.$price; ?></h3>
+                                    <p><span class="card-text font-italic">*per night</span></p>
                                     <h5 class="card-subtitle">Room(s) left: 
                                         <?php //TO BE CHANGED
                                             $conn = mysqli_connect("localhost", "root", "", "hotel");

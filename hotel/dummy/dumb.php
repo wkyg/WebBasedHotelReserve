@@ -81,11 +81,14 @@
     $conn->close();
 ?>
 */
-    $a .= "a"; 	 
-    $a .= "b"; 
-    $a .= "c"; 
+    $today = date("2021-03-02");
+    $tommorow = date("2021-03-02");
 
-    echo $a;
+    if($today <= $tommorow){
+        echo "yes";
+    }else{
+        echo "no";
+    }
 
 
 

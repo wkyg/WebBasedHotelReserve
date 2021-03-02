@@ -26,6 +26,17 @@
             $email = $_POST["email"];
             $con_num = $_POST["con-num"];
 
+            $check_in = $_SESSION["datein_result"];
+            $check_out = $_SESSION["dateout_result"];
+            
+            $days_diff_in = strtotime($check_in);
+            $days_diff_out = strtotime($check_out);
+
+            $datediff = $days_diff_out - $days_diff_in;
+            $days_stay = round($datediff / (60 * 60 * 24));
+
+            echo $days_stay;
+
             $conn = mysqli_connect("localhost", "root", "", "hotel");
 
             if($conn){
@@ -71,7 +82,9 @@
                                     <p class="card-text">Room type: <b><?php echo $room_type; ?></b></p>
                                     <p class="card-text">Room number: <span class="badge badge-info"><?php echo $room_num; ?></span></p>
                                     <p class="card-text">Room availability: <span class="badge badge-success"><?php echo $room_avai; ?></span></p>
-                                    <p class="card-text">Room price: <b>RM <?php echo $room_price; ?></b></p>
+                                    <p class="card-text">Check-in date: <b><?php echo $check_in; ?></b></p>
+                                    <p class="card-text">Check-out date: <b><?php echo $check_out; ?></b></p>
+                                    <p class="card-text">Room price: <b>RM <?php echo $room_price; ?></b> / per night</p>
                                     <p class="card-text">Selected payment method: 
                                     <b><?php 
                                         if($pay_method == "payatcounter"){
@@ -90,7 +103,7 @@
                                 <div class="card-body">
                                     <?php
                                         if($pay_method == "payatcounter"){?>
-                                            <form action="mailConfirmBook.php?room_id=<?=$room_id?>&hotel_id=<?=$hotel_id?>&pay_method=<?=$pay_method?>" method=POST>
+                                            <form action="mailConfirmBook.php?room_id=<?=$room_id?>&hotel_id=<?=$hotel_id?>&pay_method=<?=$pay_method?>&check_in=<?=$check_in?>&check_out=<?=$check_out?>" method=POST>
                                                 <div class="form-group">
                                                     <h3 class="card-title">Entered details</h3>
                                                     <h5 class="card-title">Full name</h5>
@@ -112,7 +125,7 @@
                                                     <input type="text" class="form-control" id="formGroupExampleInput" placeholder="Contact number" value="<?php echo $con_num ?>" readonly>
                                                 </div>
                                                 <h5 class="card-title">Price to be paid</h5>
-                                                <p class="card-text"><b>RM <?php echo $room_price; ?></b></p>
+                                                <p class="card-text"><b>RM <?php echo $room_price*$days_stay; ?></b></p>
                                                 <button type="submit" id="submit" class="btn btn-primary">Confirm book</button>
                                             </form>
                                             <?php
@@ -145,7 +158,7 @@
                                                     </label>
                                                 </div>
                                                 <h5 class="card-title">Price to be paid</h5>
-                                                <p class="card-text"><b>RM <?php echo $room_price; ?></b></p>
+                                                <p class="card-text"><b>RM <?php echo $room_price*$days_stay; ?></b></p>
                                                 <button type="submit" id="submit" class="btn btn-primary">Confirm payment</button>
                                             </form><?php
                                         }

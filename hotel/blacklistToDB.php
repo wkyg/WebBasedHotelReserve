@@ -12,43 +12,28 @@
         <link rel="icon" type="image/png" sizes="32x32" href="images/favicon-32x32.png">
         <link rel="icon" type="image/png" sizes="16x16" href="images/favicon-16x16.png">
         <link rel="manifest" href="images/site.webmanifest">
-        <title>Check out</title>
+        <title>Blacklist</title>
     </head>
     <body>
         <?php 
             include_once "header.php";
 
-            $room_id = $_GET["room_id"];
-            $hotel_id = $_GET["hotel_id"];
-            $pay_method = $_GET["pay_method"];
             $user_id = $_GET["user_id"];
-            $check_in = $_GET["check_in"];
-            $check_out = $_GET["check_out"];
-
-            if($pay_method == "payatcounter"){
-                $pay_method = "Pay at counter";
-            }else{
-                $pay_method = "Bank in";
-            }
-
-            print_r($_SESSION);
-
-            echo $room_id.$hotel_id.$pay_method.$user_id;
+            $reason = $_POST["black-reason"];
 
             $conn = mysqli_connect("localhost", "root", "", "hotel");
 
-            if($conn){
-                $sql = "INSERT INTO BOOKING (BOOK_ID, HOTEL_ID, ROOM_ID, BOOK_DATE, CHECK_IN, CHECK_OUT, PAYMENT_TYPE, USER_ID) VALUES ('', '$hotel_id', '$room_id', now(), '$check_in', '$check_out', '$pay_method', '$user_id')";
-                $sql2 = "UPDATE ROOM SET ROOM_AVAI = '$check_out' WHERE ROOM_ID = '$room_id'";
+            if($conn){                
+                $sql = "UPDATE USER SET ACC_STAT = '1', BLACKLIST_REASON = '$reason'  WHERE USER_ID = '$user_id'";
 
-                if(mysqli_query($conn, $sql)){
-                    echo "book success";
-                    if(mysqli_query($conn, $sql2)){
-                        echo "update success";
-                        header("location: bookSuccess.php");
-                    }else{
-                        echo "update fail";
-                    }
+                if(mysqli_query($conn, $sql)){?>
+                   <main class="container pt-5 mt-5">
+                        <div class="jumbotron">
+                            <h1 class="display-4">Successfully blacklisted</h1>
+                            <p class="lead">Click on the link to redirect back to your profile page</p>                            
+                            <p>To profile page!<a href="profilePageAdmin.php"> Click here</a></p>
+                        </div>
+                    </main><?php
                 }else{
                     echo "fail";
                 }
@@ -58,6 +43,7 @@
 
             $conn->close();
         ?>
+        
     </body>
     <?php 
         include_once "footer.php";

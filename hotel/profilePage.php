@@ -132,12 +132,15 @@
                                         $room_id = $row_4["ROOM_ID"];
                                         $hotel_name = $row_4["HOTEL_NAME"];
                                         $hotel_loc = $row_4["HOTEL_LOC"];
+                                        $hotel_address = $row_4["ADDRESS"];
                                         $hotel_contact = $row_4["CONTACT"];
                                         $room_type = $row_4["ROOM_TYPE"];
                                         $room_num = $row_4["ROOM_NUMBER"];
                                         $room_price = $row_4["ROOM_PRICE"];
                                         $room_img = $row_4["ROOM_IMG"];
                                         $book_date = $row_4["BOOK_DATE"];
+                                        $check_in = $row_4["CHECK_IN"];
+                                        $check_out = $row_4["CHECK_OUT"];
                                         $payment_meth = $row_4["PAYMENT_TYPE"];?>
 
                                         <div class="row mb-3">               
@@ -147,11 +150,14 @@
                                                         <p class="card-text">Booking ID: <b><?php echo $book_id; ?></b></p>
                                                         <p class="card-text">Hotel name: <b><?php echo $hotel_name; ?></b></p>
                                                         <p class="card-text">Hotel location: <b><?php echo $hotel_loc; ?></b></p>
+                                                        <p class="card-text">Hotel address: <b><?php echo $hotel_address; ?></b></p>
                                                         <p class="card-text">Hotel contact: <b><?php echo $hotel_contact; ?></b></p>
                                                         <p class="card-text">Room type: <b><?php echo $room_type; ?></b></p>
                                                         <p class="card-text">Room number: <b><?php echo $room_num; ?></b></p>
                                                         <p class="card-text">Room price: <b><?php echo $room_price; ?></b></p>
                                                         <p class="card-text">Book date: <b><?php echo $book_date; ?></b></p>
+                                                        <p class="card-text">Check-in date: <b><?php echo $check_in; ?></b></p>
+                                                        <p class="card-text">Check-out date: <b><?php echo $check_out; ?></b></p>
                                                         <p class="card-text">Payment method: <b><?php echo $payment_meth; ?></b></p>
                                                         <a href="cancelBookMail.php?book_id=<?=$book_id?>&room_id=<?=$room_id?>" class="btn btn-danger" data-toggle="tooltip" data-placement="right" 
                                                         title="Are you sure you want to cancel?">Cancel booking</a>
