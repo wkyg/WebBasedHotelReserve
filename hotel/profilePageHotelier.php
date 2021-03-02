@@ -18,8 +18,10 @@
     <body>
         <?php
             include_once "header.php";
+
+            $current_user_id = $_SESSION["userID"];
             
-            echo "Hotelierrrrrrr";
+            //echo "Hotelierrrrrrr";
         ?>
         <main class="container">
             <ul class="nav nav-pills mb-3" id="pills-tab" role="tablist">
@@ -51,8 +53,7 @@
                                 <div class="col-lg mb-3">
                                     <div class="card">
                                         <div class="card-body">
-                                            <?php
-                                                $current_user_id = $_SESSION["userID"];
+                                            <?php                                                
                                                 $conn = mysqli_connect("localhost", "root", "", "hotel");
     
                                                 if($conn){
@@ -78,8 +79,7 @@
                                 <div class="col-lg">
                                     <div class="card">
                                         <div class="card-body">
-                                            <?php
-                                                $current_user_id = $_SESSION["userID"];
+                                            <?php                                                
                                                 $conn = mysqli_connect("localhost", "root", "", "hotel");
     
                                                 if($conn){
@@ -118,11 +118,17 @@
                 <div class="tab-pane fade" id="pills-booking" role="tabpanel" aria-labelledby="pills-contact-tab">
                     <div class="card">
                         <div class="card-header">
-                            <h3 class="card-title">My Hotels</h3>
+                            <div class="row">
+                                <div class="col-lg-10">
+                                    <h3 class="card-title text-left">My Hotels</h3>
+                                </div>
+                                <div class="col-lg">
+                                    <a href="addHotel.php?hotelier_id=<?=$current_user_id?>" class="btn btn-primary" >Add new hotel</a>
+                                </div>
+                            </div>                            
                         </div>
                         <div class="card-body">
-                            <?php 
-                                $current_user_id = $_SESSION["userID"];
+                            <?php                                 
                                 $conn = mysqli_connect("localhost", "root", "", "hotel");
 
                                 if($conn){
@@ -154,14 +160,13 @@
                                                         <p class="card-text">Hotel location: <b><?php echo $hotel_loc; ?></b></p>
                                                         <p class="card-text">Hotel description: <b><?php echo $hotel_des; ?></b></p>
                                                         <p class="card-text">Hotel information: <b><?php echo $hotel_info; ?></b></p>
-                                                        <p class="card-text">Hotel check-in time: <b><?php echo $hotel_check_in; ?></b></p>
-                                                        <p class="card-text">Hotel check-out time: <b><?php echo $hotel_check_out; ?></b></p>
+                                                        <p class="card-text">Hotel check-in time: <b><?php echo substr($hotel_check_in, 0, 5); ?></b></p>
+                                                        <p class="card-text">Hotel check-out time: <b><?php echo substr($hotel_check_out, 0, 5); ?></b></p>
                                                         <p class="card-text">Hotel price: <b><?php echo $hotel_price; ?></b></p>
                                                         <p class="card-text">Hotel detail: <b><?php echo $hotel_detail; ?></b></p>
                                                         <p class="card-text">Hotel address: <b><?php echo $hotel_address; ?></b></p>
                                                         <p class="card-text">Hotel contact: <b><?php echo $hotel_contact; ?></b></p>
-                                                        <a href="#" class="btn btn-danger" data-toggle="tooltip" data-placement="right" 
-                                                        title="Are you sure you want to cancel?">Edit infomation</a>
+                                                        <a href="#" class="btn btn-danger">Edit infomation</a>
                                                     </div>
                                                 </div>
                                             </div>

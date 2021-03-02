@@ -140,8 +140,8 @@
         ?>
         <script>
             function step(){
-                    document.getElementById("stepper_0").stepUp(1);
-                } 
+                document.getElementById("stepper_0").stepUp(1);
+            } 
             function step_1(){
                 document.getElementById("stepper_1").stepUp(1);
             }           
