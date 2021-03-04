@@ -18,7 +18,7 @@
         <?php 
             include_once "header.php";
 
-            print_r($_SESSION);
+            //print_r($_SESSION);
 
             if($_SESSION["logged"] == FALSE){
                 header("location: loginPage.php");
@@ -36,7 +36,7 @@
             $datediff = $days_diff_out - $days_diff_in;
             $days_stay = round($datediff / (60 * 60 * 24));
 
-            echo $days_stay;
+            //echo $days_stay;
 
             $conn = mysqli_connect("localhost", "root", "", "hotel");
 

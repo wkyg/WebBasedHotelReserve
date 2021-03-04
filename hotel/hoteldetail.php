@@ -67,7 +67,7 @@
         <?php
             include_once "header.php";
 
-            print_r($_SESSION);
+            //print_r($_SESSION);
 
             $cin_date = $_SESSION["datein_result"];
             $cout_date = $_SESSION["dateout_result"];
@@ -717,7 +717,7 @@
                                 <?php
                                     $hotel_detail_id = $_GET["hotel_id"];
 
-                                    echo $cin_date."->".$cout_date;
+                                    //echo $cin_date."->".$cout_date;
                                     $conn = mysqli_connect("localhost", "root", "", "hotel");
 
                                     if($conn){
@@ -735,7 +735,7 @@
                                             <div class="row mb-3">
                                                 <div class="col-lg">
                                                     <div class="card mb-3" id="special">
-                                                        <img src="data:image/jpg;charset=utf8;base64,<?php echo base64_encode($room_img); ?>" id="special-img" class="card-img-top" />
+                                                        <img src="data:image/jpg;charset=utf8;base64,<?php echo $room_img; ?>" id="special-img" class="card-img-top" />
                                                         <div class="card-body text-left">
                                                             <h3 class="card-title" id="special-title"><?php echo $room_type; ?></h3>
                                                             <!--<p class="card-text"> checkin <?php //echo $exist_check_in ?></p>
@@ -743,7 +743,7 @@
                                                             <p class="card-text"> Room number: <span class="badge badge-info"><?php echo $room_number ?></span></p>
                                                             <p class="card-text">Room availability:
                                                             <?php  
-                                                                if ($cin_date >= $room_avai){?>
+                                                                if ($room_avai == "yes"){?>
                                                                     <span class="badge badge-success">Available</span><?php
                                                                 }else{?>
                                                                     <span class="badge badge-danger">Booked</span><?php
@@ -751,7 +751,7 @@
                                                             ?>    
                                                             </p>   
                                                             <?php  
-                                                                if ($cin_date >= $room_avai){?>
+                                                                if ($room_avai == "yes"){?>
                                                                     <a href="book.php?room_id=<?=$room_id?>&hotel_id=<?=$hotel_detail_id?>" class="btn btn-primary">Book now</a><?php
                                                                 }else{?>
                                                                     <a href="#" class="btn btn-primary disabled">Book now</a><?php

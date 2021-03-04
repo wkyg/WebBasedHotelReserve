@@ -10,30 +10,38 @@
         integrity="sha384-TX8t27EcRE3e/ihU7zmQxVncDAy5uIKz4rEkgIXeMed4M0jlfIDPvg6uqKI2xXr2" crossorigin="anonymous">
         <!--Local CSS-->
         <link rel="stylesheet" type=text/css href="css/contactStyle.css">
-        <title>Change photo</title>
+        <title>Edit room</title>
     </head>
     <body>
         <main class="container">
             <?php
                 $room_id = $_GET["room_id"];
 
-                $flag = FALSE;
+                $room_type = $_POST["room-type"];
+                $room_number = $_POST["room-num"];
+                $room_avai = $_POST["room-avai"];
+                $room_price = $_POST["room-price"];
+         
+                if($room_avai == "Available"){
+                    $room_avai = "yes";
+                }else{
+                    $room_avai = "no";
+                }
 
-                $room_img = $_FILES['room-img']['tmp_name'];
-                $room_img = base64_encode(file_get_contents(addslashes($room_img)));
-
-                //echo $main_image.$sub_image_1.$sub_image_2.$sub_image_3.$sub_image_4.$sub_image_5;
+                $flag = FALSE; 
+                
+                //echo $room_type.$room_number.$room_avai.$room_price;
 
                 $conn = mysqli_connect("localhost", "root", "", "hotel");
 
-                if($conn){
-                    $sql = "UPDATE ROOM SET ROOM_IMG='$room_img' WHERE ROOM_ID='$room_id'";                    
+                if($conn){                    
+                    $sql = "UPDATE ROOM SET ROOM_TYPE='$room_type', ROOM_NUMBER='$room_number', ROOM_AVAI='$room_avai', ROOM_PRICE='$room_price' WHERE ROOM_ID = '$room_id'";
 
                     if(mysqli_query($conn, $sql)){
-                        echo "updated_1";      
-                        $flag = TRUE;                  
+                        echo "updated";
+                        $flag = TRUE;
                     }else{
-                        echo "fail_1";
+                        echo "updated";
                     }
 
                     if($flag == TRUE){?>
@@ -41,13 +49,13 @@
                             <h1 class="display-4">Successfully updated</h1>                            
                             <p class="lead">Thank you!</p>
                             <p>To profile page!<a href="profilePageHotelier.php"> Click here</a></p>
-                        </div><?php      
+                        </div><?php
                     }else{?>
                         <div class="jumbotron">
                             <h1 class="display-4">Fail to update</h1>                            
                             <p class="lead">Try again?</p>
                             <p>To profile page!<a href="profilePageHotelier.php"> Click here</a></p>
-                        </div><?php      
+                        </div><?php
                     }
                 }else{
                     die("FATAL ERROR");

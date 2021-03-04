@@ -75,7 +75,7 @@
                     <div class="card-body">
                         <div class="row text-center mb-3">
                             <div class="col-lg">
-                                <img src="data:image/jpg;charset=utf8;base64,<?php echo base64_encode($room_img); ?>"/> 
+                                <img src="data:image/jpg;charset=utf8;base64,<?php echo $room_img; ?>"/> 
                             </div>
                         </div>
                         <div class="row mb-3">

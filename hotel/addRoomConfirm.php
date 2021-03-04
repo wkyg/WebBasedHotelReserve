@@ -10,44 +10,55 @@
         integrity="sha384-TX8t27EcRE3e/ihU7zmQxVncDAy5uIKz4rEkgIXeMed4M0jlfIDPvg6uqKI2xXr2" crossorigin="anonymous">
         <!--Local CSS-->
         <link rel="stylesheet" type=text/css href="css/contactStyle.css">
-        <title>Change photo</title>
+        <title>Add room</title>
     </head>
     <body>
         <main class="container">
             <?php
-                $room_id = $_GET["room_id"];
+                $tmp_hot_id = $_GET["hotel_id"];
 
+                $room_type = $_POST["room-type"];
+                $room_number = $_POST["room-num"];
+                $room_avai = $_POST["room-avai"];
+                $room_price = $_POST["room-price"];
+         
+                if($room_avai == "Available"){
+                    $room_avai = "yes";
+                }else{
+                    $room_avai = "no";
+                }
                 $flag = FALSE;
 
                 $room_img = $_FILES['room-img']['tmp_name'];
-                $room_img = base64_encode(file_get_contents(addslashes($room_img)));
-
-                //echo $main_image.$sub_image_1.$sub_image_2.$sub_image_3.$sub_image_4.$sub_image_5;
+                $room_img = base64_encode(file_get_contents(addslashes($room_img)));         
+                
+                //echo $room_type.$room_number.$room_avai.$room_price;
 
                 $conn = mysqli_connect("localhost", "root", "", "hotel");
 
-                if($conn){
-                    $sql = "UPDATE ROOM SET ROOM_IMG='$room_img' WHERE ROOM_ID='$room_id'";                    
+                if($conn){                    
+                    $sql = "INSERT INTO ROOM (ROOM_ID, ROOM_TYPE, ROOM_NUMBER, ROOM_AVAI, ROOM_PRICE, ROOM_IMG, HOTEL_ID) VALUES 
+                    ('', '$room_type', '$room_number', '$room_avai', '$room_price', '$room_img', '$tmp_hot_id')";
 
                     if(mysqli_query($conn, $sql)){
-                        echo "updated_1";      
-                        $flag = TRUE;                  
+                        echo "inserted";
+                        $flag = TRUE;
                     }else{
-                        echo "fail_1";
+                        echo "failed";
                     }
 
                     if($flag == TRUE){?>
                         <div class="jumbotron">
-                            <h1 class="display-4">Successfully updated</h1>                            
+                            <h1 class="display-4">Successfully added</h1>                            
                             <p class="lead">Thank you!</p>
                             <p>To profile page!<a href="profilePageHotelier.php"> Click here</a></p>
-                        </div><?php      
+                        </div><?php
                     }else{?>
                         <div class="jumbotron">
-                            <h1 class="display-4">Fail to update</h1>                            
+                            <h1 class="display-4">Fail to add</h1>                            
                             <p class="lead">Try again?</p>
                             <p>To profile page!<a href="profilePageHotelier.php"> Click here</a></p>
-                        </div><?php      
+                        </div><?php
                     }
                 }else{
                     die("FATAL ERROR");

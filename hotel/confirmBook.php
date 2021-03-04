@@ -39,16 +39,16 @@
 
             if($conn){
                 $sql = "INSERT INTO BOOKING (BOOK_ID, HOTEL_ID, ROOM_ID, BOOK_DATE, CHECK_IN, CHECK_OUT, PAYMENT_TYPE, USER_ID) VALUES ('', '$hotel_id', '$room_id', now(), '$check_in', '$check_out', '$pay_method', '$user_id')";
-                $sql2 = "UPDATE ROOM SET ROOM_AVAI = '$check_out' WHERE ROOM_ID = '$room_id'";
+                //$sql2 = "UPDATE ROOM SET ROOM_AVAI = '$check_out' WHERE ROOM_ID = '$room_id'";
 
                 if(mysqli_query($conn, $sql)){
                     echo "book success";
-                    if(mysqli_query($conn, $sql2)){
-                        echo "update success";
-                        header("location: bookSuccess.php");
-                    }else{
-                        echo "update fail";
-                    }
+                    header("location: bookSuccess.php");
+                    //if(mysqli_query($conn, $sql2)){
+                      //  echo "update success";
+                    //}else{
+                    //    echo "update fail";
+                    //}
                 }else{
                     echo "fail";
                 }

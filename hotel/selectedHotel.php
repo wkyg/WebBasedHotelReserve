@@ -74,6 +74,7 @@
                                                 <p class="card-text">Hotel address: <b><?php echo $hotel_address; ?></b></p>
                                                 <p class="card-text">Hotel contact: <b><?php echo $hotel_contact; ?></b></p>
                                                 <a href="editHotel.php?hotel_id=<?=$tmp_hot_id?>" class="btn btn-success">Edit infomation</a>
+                                                <a href="manageRoom.php?hotel_id=<?=$tmp_hot_id?>" class="btn btn-success">Manage rooms</a>
                                                 <a href="editHotelPhoto.php?hotel_id=<?=$tmp_hot_id?>" class="btn btn-primary">Change photo</a>
                                                 <button type="button" class="btn btn-danger" data-toggle="modal" data-target="#delete">
                                                     Delete hotel
