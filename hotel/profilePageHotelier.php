@@ -166,7 +166,7 @@
                                                         <p class="card-text">Hotel detail: <b><?php echo $hotel_detail; ?></b></p>
                                                         <p class="card-text">Hotel address: <b><?php echo $hotel_address; ?></b></p>
                                                         <p class="card-text">Hotel contact: <b><?php echo $hotel_contact; ?></b></p>
-                                                        <a href="#" class="btn btn-danger">Edit infomation</a>
+                                                        <a href="selectedHotel.php?hotel_id=<?=$hotel_id?>" class="btn btn-danger">Edit infomation</a>
                                                     </div>
                                                 </div>
                                             </div>

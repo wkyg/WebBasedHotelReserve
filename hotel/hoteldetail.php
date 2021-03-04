@@ -84,23 +84,23 @@
                     </ol>
                     <div class="carousel-inner">
                         <div class="carousel-item active">
-                            <img class="d-block w-100" src="data:image/jpg;charset=utf8;base64,<?php echo base64_encode($img_1); ?>" height=auto alt="img_1" />
+                            <img class="d-block w-100" src="data:image/jpg;charset=utf8;base64,<?php echo $img_1; ?>" height=auto alt="img_1" />
                             <div class="carousel-caption d-none d-md-block">
                                 <h5><?php echo $hotel_name ?></h5>
                                 <p><?php echo $hotel_des ?></p>
                             </div>
                         </div>
                         <div class="carousel-item">
-                            <img class="d-block w-100" src="data:image/jpg;charset=utf8;base64,<?php echo base64_encode($img_2); ?>" height=auto alt="img_2" />
+                            <img class="d-block w-100" src="data:image/jpg;charset=utf8;base64,<?php echo $img_2; ?>" height=auto alt="img_2" />
                         </div>
                         <div class="carousel-item">
-                            <img class="d-block w-100" src="data:image/jpg;charset=utf8;base64,<?php echo base64_encode($img_3); ?>" height=auto alt="img_3" />    
+                            <img class="d-block w-100" src="data:image/jpg;charset=utf8;base64,<?php echo $img_3; ?>" height=auto alt="img_3" />    
                         </div>
                         <div class="carousel-item">
-                            <img class="d-block w-100" src="data:image/jpg;charset=utf8;base64,<?php echo base64_encode($img_4); ?>" height=auto alt="img_4" />    
+                            <img class="d-block w-100" src="data:image/jpg;charset=utf8;base64,<?php echo $img_4; ?>" height=auto alt="img_4" />    
                         </div>
                         <div class="carousel-item">
-                            <img class="d-block w-100" src="data:image/jpg;charset=utf8;base64,<?php echo base64_encode($img_5); ?>" height=auto alt="img_5" />    
+                            <img class="d-block w-100" src="data:image/jpg;charset=utf8;base64,<?php echo $img_5; ?>" height=auto alt="img_5" />    
                         </div>
                     </div>
                     <a class="carousel-control-prev" href="#carouselExampleIndicators" role="button" data-slide="prev">
