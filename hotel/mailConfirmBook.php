@@ -29,34 +29,19 @@
             $check_in = $_GET["check_in"];
             $check_out = $_GET["check_out"];
 
+            $mail = $_POST["mail"];
+
             $link = "http://localhost/WebBasedHotelReserve/hotel/confirmBook.php?room_id=$room_id&hotel_id=$hotel_id&pay_method=$pay_method&user_id=$user_id&check_in=$check_in&check_out=$check_out";
 
-            //echo "</br>".$user.$user_id;
+            echo $mail;            
 
-            $conn = mysqli_connect("localhost", "root", "", "hotel");
+            //$mailChk = mail($u_email, "Thank you for your booking", "Please follow this link in order to complete your booking '$link'", "From: hotelfypp@gmail.com");
 
-            if($conn){
-                $sql = "SELECT * FROM USER WHERE USER_ID = '$user_id'";
-                $result = $conn->query($sql);
-
-                while($row = $result->fetch_assoc()){
-                    $u_email = $row["USER_EMAIL"];
-
-                    //echo $u_email;
-                }
-            }else{
-                die("FATAL ERROR");
-            }
-
-            $conn->close();
-
-            $mailChk = mail($u_email, "Thank you for your booking", "Please follow this link in order to complete your booking '$link'", "From: hotelfypp@gmail.com");
-
-            if($mailChk){
+            //if($mailChk){
                 echo '<script>alert("Mail successfully send")</script>'; 
-            }else{
+            //}else{
                 echo '<script>alert("Mail failed to send")</script>'; 
-            }
+            //}
         ?>
         <main class="container pt-5 mt-5">
             <div class="jumbotron">

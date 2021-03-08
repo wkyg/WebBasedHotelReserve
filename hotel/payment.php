@@ -129,7 +129,7 @@
                                         <div class="form-check mb-3">
                                             <input class="form-check-input" type="radio" name="payment" id="pay-bank" value="banktrans" required>
                                             <label class="form-check-label" for="pay-bank">
-                                                Online bank transfer
+                                                Pay by card
                                             </label>
                                         </div>  
                                         <h5 class="card-title">Price to be paid</h5>

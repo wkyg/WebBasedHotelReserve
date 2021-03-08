@@ -25,6 +25,11 @@
             $children = $_SESSION["children_result"];
             $room = $_SESSION["room_result"];
 
+            $curr_date = date("Y-m-d");
+            //echo $curr_date;
+            $curr_date_rep = str_replace('-', '/', $curr_date);
+            $curr_date_tmr = date('Y-m-d',strtotime($curr_date_rep . "+1 days"));
+
             //print_r($_SESSION);
         ?>
         <main class="container text-center">
@@ -43,8 +48,10 @@
                             <form action="search.php" method="GET">
                                 <div class="input-group">
                                     <input type="text" class="form-control form-control-lg rounded-0" name="search" id="searchForm" placeholder="Location" value="<?php echo $search ?>">
-                                    <input type="text" class="form-control form-control-lg rounded-0" name="datein" placeholder="Date-in" value="<?php echo $datein?>" onfocus="(this.type='date')" onblur="(this.type='text')">
-                                    <input type="text" class="form-control form-control-lg rounded-0" name="dateout" placeholder="Date-out" value="<?php echo $dateout ?>" onfocus="(this.type='date')" onblur="(this.type='text')">
+                                    <input type="text" class="form-control form-control-lg rounded-0" name="datein" placeholder="Date-in" value="<?php echo $datein?>" 
+                                    min="<?php echo $curr_date ?>" onfocus="(this.type='date')" onblur="(this.type='text')">
+                                    <input type="text" class="form-control form-control-lg rounded-0" name="dateout" placeholder="Date-out" value="<?php echo $dateout ?>" 
+                                    min="<?php echo $curr_date_tmr ?>" onfocus="(this.type='date')" onblur="(this.type='text')">
                                     <button class="btn btn-light dropdown-toggle rounded-0 rounded-0" type="button" data-toggle="dropdown" aria-expanded="false">More option</button>
                                     <ul class="dropdown-menu dropdown-menu-end">
                                         <li>
@@ -145,13 +152,21 @@
                                             $conn = mysqli_connect("localhost", "root", "", "hotel");
             
                                             if($conn){
-                                                $sql_3 = "SELECT COUNT(ROOM_AVAI) FROM ROOM WHERE HOTEL_ID = '$id' AND ROOM_AVAI = 'yes'";
+                                                $sql_3 = "SELECT COUNT(DISTINCT ROOM_ID) FROM BOOKING WHERE CHECK_IN BETWEEN '$datein' AND '$dateout' AND
+                                                CHECK_OUT BETWEEN '$datein' AND '$dateout' AND HOTEL_ID = $id";
+                                                $sql_4 = "SELECT COUNT(ROOM_ID) FROM ROOM WHERE HOTEL_ID = '$id'";
                                                 $result_3 = $conn->query($sql_3);
+                                                $result_4 = $conn->query($sql_4);
 
                                                 while($row_2 = $result_3->fetch_assoc()){
-                                                    $room_count = $row_2["COUNT(ROOM_AVAI)"];
+                                                    $room_count = $row_2["COUNT(DISTINCT ROOM_ID)"];
 
-                                                    echo $room_count;
+                                                    //echo $room_count;
+                                                    while($row_3 = $result_4->fetch_assoc()){
+                                                        $total_room = $row_3["COUNT(ROOM_ID)"];
+
+                                                        echo $total_room - $room_count;
+                                                    }
                                                 }
                                             }else{
                                                 die("FATAL ERROR");

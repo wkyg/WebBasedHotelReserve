@@ -31,24 +31,18 @@
                 $pay_method = "Bank in";
             }
 
-            print_r($_SESSION);
+            //print_r($_SESSION);
 
-            echo $room_id.$hotel_id.$pay_method.$user_id;
+            //echo $room_id.$hotel_id.$pay_method.$user_id;
 
             $conn = mysqli_connect("localhost", "root", "", "hotel");
 
             if($conn){
-                $sql = "INSERT INTO BOOKING (BOOK_ID, HOTEL_ID, ROOM_ID, BOOK_DATE, CHECK_IN, CHECK_OUT, PAYMENT_TYPE, USER_ID) VALUES ('', '$hotel_id', '$room_id', now(), '$check_in', '$check_out', '$pay_method', '$user_id')";
-                //$sql2 = "UPDATE ROOM SET ROOM_AVAI = '$check_out' WHERE ROOM_ID = '$room_id'";
+                $sql = "INSERT INTO BOOKING (BOOK_ID, HOTEL_ID, ROOM_ID, BOOK_DATE, CHECK_IN, CHECK_OUT, PAYMENT_TYPE, USER_ID) VALUES ('', '$hotel_id', '$room_id', now(), '$check_in', '$check_out', '$pay_method', '$user_id')";                
 
                 if(mysqli_query($conn, $sql)){
                     echo "book success";
-                    header("location: bookSuccess.php");
-                    //if(mysqli_query($conn, $sql2)){
-                      //  echo "update success";
-                    //}else{
-                    //    echo "update fail";
-                    //}
+                    header("location: bookSuccess.php");                    
                 }else{
                     echo "fail";
                 }
@@ -59,7 +53,7 @@
             $conn->close();
         ?>
     </body>
-    <?php 
+    <?php
         include_once "footer.php";
     ?>
 </html>

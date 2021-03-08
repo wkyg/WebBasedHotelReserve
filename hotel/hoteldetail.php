@@ -741,12 +741,12 @@
                                                             <!--<p class="card-text"> checkin <?php //echo $exist_check_in ?></p>
                                                             <p class="card-text"> checkout: <?php //echo $exist_check_out ?></p>-->
                                                             <p class="card-text"> Room number: <span class="badge badge-info"><?php echo $room_number ?></span></p>
-                                                            <p class="card-text">Room availability:
+                                                            <p class="card-text">Room status:
                                                             <?php  
                                                                 if ($room_avai == "yes"){?>
-                                                                    <span class="badge badge-success">Available</span><?php
+                                                                    <span class="badge badge-success">Normal</span><?php
                                                                 }else{?>
-                                                                    <span class="badge badge-danger">Booked</span><?php
+                                                                    <span class="badge badge-danger">Under maintenance</span><?php
                                                                 }
                                                             ?>    
                                                             </p>   

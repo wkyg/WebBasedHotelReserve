@@ -141,7 +141,9 @@
                                         $book_date = $row_4["BOOK_DATE"];
                                         $check_in = $row_4["CHECK_IN"];
                                         $check_out = $row_4["CHECK_OUT"];
-                                        $payment_meth = $row_4["PAYMENT_TYPE"];?>
+                                        $payment_meth = $row_4["PAYMENT_TYPE"];
+                                        $status = $row_4["STATUS"];
+                                        $hotel_id = $row_4["HOTEL_ID"];?>
 
                                         <div class="row mb-3">               
                                             <div class="col-lg">
@@ -159,8 +161,14 @@
                                                         <p class="card-text">Check-in date: <b><?php echo $check_in; ?></b></p>
                                                         <p class="card-text">Check-out date: <b><?php echo $check_out; ?></b></p>
                                                         <p class="card-text">Payment method: <b><?php echo $payment_meth; ?></b></p>
-                                                        <a href="cancelBookMail.php?book_id=<?=$book_id?>&room_id=<?=$room_id?>" class="btn btn-danger" data-toggle="tooltip" data-placement="right" 
-                                                        title="Are you sure you want to cancel?">Cancel booking</a>
+                                                        <p class="card-text">Status: <b><?php echo $status; ?></b></p>
+                                                        <?php
+                                                            if($status != "CHECKED_OUT"){?>
+                                                                <button type="button" class="btn btn-danger" data-toggle="modal" data-target="#cancelBook">Cancel booking</button><?php
+                                                            }else{?>
+                                                                <a href="feedback.php?hotel_id=<?=$hotel_id?>" class="btn btn-success">Rate & comment</a><?php
+                                                            }
+                                                        ?>
                                                     </div>
                                                 </div>
                                             </div>
@@ -178,6 +186,27 @@
                 </div>
             </div>
         </main>
+        <!-- Modal -->
+        <div class="modal fade" id="cancelBook" tabindex="-1" role="dialog" aria-labelledby="cancelBook" aria-hidden="true">
+            <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabel">Book cancellation</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    Are ytou sure you want to <b>cancel</b> this booking?
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                    <a href="cancelBookMail.php?book_id=<?=$book_id?>&room_id=<?=$room_id?>" class="btn btn-danger" data-toggle="tooltip" data-placement="right" 
+                    title="Are you sure you want to cancel?">Cancel booking</a>
+                </div>
+                </div>
+            </div>
+        </div>
         <?php
             include_once "footer.php";
         ?>

@@ -27,6 +27,10 @@
             $room_id = $_GET["room_id"];
             $hotel_id = $_GET["hotel_id"];
             $user_id = $_SESSION["userID"];
+            $date_in = $_SESSION["datein_result"];
+            $date_out = $_SESSION["dateout_result"];
+
+            $flag = FALSE;
 
             $conn = mysqli_connect("localhost", "root", "", "hotel");
 
@@ -34,9 +38,11 @@
                 $sql = "SELECT * FROM ROOM WHERE ROOM_ID = '$room_id'";
                 $sql2 = "SELECT HOTEL_NAME, HOTEL_LOC FRoM HOTEL WHERE HOTEL_ID = '$hotel_id'";
                 $sql3 = "SELECT ACC_STAT FROM USER WHERE USER_ID = '$user_id'";
+                $sql4 = "SELECT COUNT(BOOK_ID) FROM BOOKING WHERE CHECK_IN BETWEEN '$date_in' AND '$date_out' AND CHECK_OUT BETWEEN '$date_in' AND '$date_out' AND ROOM_ID = '$room_id'";
                 $result = $conn->query($sql);
                 $result2 = $conn->query($sql2);
                 $result3 = $conn->query($sql3);
+                $result4 = $conn->query($sql4);
 
                 while($row = $result->fetch_assoc()){
                     $room_type = $row["ROOM_TYPE"];
@@ -51,9 +57,20 @@
 
                         while($row_3 = $result3->fetch_assoc()){
                             $status = $row_3["ACC_STAT"];
+                            
+                            while($row_4 = $result4->fetch_assoc()){
+                                $count = $row_4["COUNT(BOOK_ID)"];
+
+                                //echo $count;                                
+                            }
                         }
                     }
                 }
+                
+                if($count == 0){$flag = TRUE;}else{}
+                    
+                
+                //echo $flag;
             }else{
                 die("FATAL ERROR");
             }
@@ -64,6 +81,10 @@
 
             if($status == 1){
                 header("location: blacklist.php");
+            }
+
+            if($_SESSION["accType"] != 1){
+                header("location: index.php");
             }
         ?>
         <main class="container">
@@ -85,10 +106,25 @@
                                         <h5 class="card-title">Selected Room Details</h5>
                                         <p class="card-text">Room type: <?php echo $room_type; ?></p>
                                         <p class="card-text">Room number: <span class="badge badge-info"><?php echo $room_num; ?></span></p>
-                                        <p class="card-text">Room availability: <span class="badge badge-success"><?php echo $room_avai; ?></span></p>
+                                        <p class="card-text">Room availability: 
+                                            <?php
+                                                if($flag == TRUE){?>
+                                                    <span class="badge badge-success">Available</span><?php
+                                                }else{?>
+                                                    <span class="badge badge-danger">Booked</span><?php
+                                                }
+                                            ?>
+                                        </p>
                                         <p class="card-text">Room price: <b>RM <?php echo $room_price; ?></b> / per night</p>
-                                        <a href="payment.php?room_id=<?=$room_id?>&hotel_id=<?=$hotel_id?>" class="btn btn-primary" data-toggle="tooltip" data-placement="right" title="By clicking Book now, 
-                                        you will be redirected to the payment page">Book now</a>
+                                            <?php
+                                                if($flag == TRUE){?>
+                                                    <a href="payment.php?room_id=<?=$room_id?>&hotel_id=<?=$hotel_id?>" class="btn btn-primary" data-toggle="tooltip" 
+                                                    data-placement="right" title="By clicking Book now, you will be redirected to the payment page">Book now</a><?php
+                                                }else{?>
+                                                    <a href="payment.php?room_id=<?=$room_id?>&hotel_id=<?=$hotel_id?>" class="btn btn-primary disabled" data-toggle="tooltip" 
+                                                    data-placement="right" title="By clicking Book now, you will be redirected to the payment page">Book now</a><?php
+                                                }
+                                            ?>                                        
                                     </div>
                                 </div>
                             </div>

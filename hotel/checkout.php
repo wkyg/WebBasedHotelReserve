@@ -35,7 +35,7 @@
             $datediff = $days_diff_out - $days_diff_in;
             $days_stay = round($datediff / (60 * 60 * 24));
 
-            echo $days_stay;
+            //echo $days_stay;
 
             $conn = mysqli_connect("localhost", "root", "", "hotel");
 
@@ -62,6 +62,8 @@
             }
 
             $conn->close();
+
+            $total_price = $room_price*$days_stay;
         ?>
 
         
@@ -90,7 +92,7 @@
                                         if($pay_method == "payatcounter"){
                                             echo "Pay at front desk";
                                         }else{
-                                            echo "Bank transfer";
+                                            echo "Pay by card";
                                         }
                                     ?></b></p>
                                 </div>
@@ -118,19 +120,19 @@
                                                 </div>
                                                 <div class="form-group">
                                                     <h5 class="card-title">Email</h5>
-                                                    <input type="text" class="form-control" id="formGroupExampleInput" placeholder="Email" value="<?php echo $email ?>" readonly>
+                                                    <input type="text" class="form-control" id="formGroupExampleInput" name="mail" placeholder="Email" value="<?php echo $email ?>" readonly>
                                                 </div>
                                                 <div class="form-group">
                                                     <h5 class="card-title">Contact number</h5>
                                                     <input type="text" class="form-control" id="formGroupExampleInput" placeholder="Contact number" value="<?php echo $con_num ?>" readonly>
                                                 </div>
                                                 <h5 class="card-title">Price to be paid</h5>
-                                                <p class="card-text"><b>RM <?php echo $room_price*$days_stay; ?></b></p>
+                                                <p class="card-text"><b>RM <?php echo $total_price; ?></b></p>
                                                 <button type="submit" id="submit" class="btn btn-primary">Confirm book</button>
                                             </form>
                                             <?php
                                         }else{?>
-                                            <form action="confirmPay.php" method=POST>
+                                            <form action="confirmPay.php?room_num=<?=$room_num?>&room_id=<?=$room_id?>&hotel_id=<?=$hotel_id?>&pay_method=<?=$pay_method?>&check_in=<?=$check_in?>&check_out=<?=$check_out?>" method=POST>
                                                 <div class="form-group">
                                                     <h3 class="card-title">Entered details</h3>
                                                     <h5 class="card-title">Full name</h5>
@@ -145,20 +147,15 @@
                                                 </div>
                                                 <div class="form-group">
                                                     <h5 class="card-title">Email</h5>
-                                                    <input type="text" class="form-control" id="formGroupExampleInput" placeholder="Email" value="<?php echo $email ?>" readonly>
+                                                    <input type="text" class="form-control" id="formGroupExampleInput" placeholder="Email" name="email" value="<?php echo $email ?>" readonly>
                                                 </div>
                                                 <div class="form-group">
                                                     <h5 class="card-title">Contact number</h5>
                                                     <input type="text" class="form-control" id="formGroupExampleInput" placeholder="Contact number" value="<?php echo $con_num ?>" readonly>
-                                                </div>
-                                                <div class="form-check mb-3">
-                                                    <input class="form-check-input" type="radio" name="payment" id="pay-bank" value="banktrans">
-                                                    <label class="form-check-label" for="pay-bank">
-                                                        Bank transfer
-                                                    </label>
-                                                </div>
+                                                </div>                                                
                                                 <h5 class="card-title">Price to be paid</h5>
-                                                <p class="card-text"><b>RM <?php echo $room_price*$days_stay; ?></b></p>
+                                                <p class="card-text"><b>RM <?php echo $total_price ?></b></p>
+                                                <input type="number" class="form-control hide invisible" id="formGroupExampleInput" placeholder="Contact number" name="t-price"value="<?php echo $total_price ?>" readonly>
                                                 <button type="submit" id="submit" class="btn btn-primary">Confirm payment</button>
                                             </form><?php
                                         }

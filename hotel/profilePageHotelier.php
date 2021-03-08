@@ -34,6 +34,9 @@
                 <li class="nav-item">
                     <a class="nav-link text-white" id="pills-contact-tab" data-toggle="pill" href="#pills-booking" role="tab" aria-controls="pills-contact" aria-selected="false">My Hotels</a>
                 </li>
+                <li class="nav-item">
+                    <a class="nav-link text-white" id="pills-inout-tab" data-toggle="pill" href="#pills-inout" role="tab" aria-controls="pills-contact" aria-selected="false">Manage checkings</a>
+                </li>
             </ul>
             <div class="tab-content" id="pills-tabContent">
                 <div class="tab-pane fade show active" id="pills-home" role="tabpanel" aria-labelledby="pills-home-tab">
@@ -179,6 +182,30 @@
                                 
                                 $conn->close();
                             ?>
+                        </div>
+                    </div>
+                </div>
+                <div class="tab-pane fade" id="pills-inout" role="tabpanel" aria-labelledby="pills-contact-tab">
+                    <div class="card">
+                        <div class="card-header">
+                            <h3 class="card-title">Manage check-in & check-out</h3>
+                        </div>
+                        <div class="card-body">
+                            <div class="row">
+                                <div class="col-lg">
+                                    <div class="card">
+                                        <div class="card-body">
+                                            <form action="manageCheck.php" method="GET">
+                                                <div class="form-group">
+                                                    <h5 class="card-title">Enter booking ID</h5>
+                                                    <input type="text" class="form-control" name="book-id" id="book-id" placeholder="e.g 11, 51" required>
+                                                </div>
+                                                <button type="submit" class="btn btn-primary">Search</button>
+                                            </form>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
                         </div>
                     </div>
                 </div>
