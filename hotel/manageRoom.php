@@ -63,9 +63,8 @@
                                                 <p class="card-text">Room price: <b><?php echo $room_price; ?></b></p>    
                                                 <a href="editRoom.php?room_id=<?=$room_id?>" class="btn btn-success">Edit room</a>
                                                 <a href="editRoomPhoto.php?room_id=<?=$room_id?>" class="btn btn-primary">Change photo</a>                                            
-                                                <button type="button" class="btn btn-danger" data-toggle="modal" data-target="#delete">
-                                                    Delete room
-                                                </button>
+                                                <a href="deleteRoomConfirm.php?room_id=<?=$room_id?>" class="btn btn-danger" data-toggle="tooltip" data-placement="right" 
+                                                title="Are you sure you want to delete?">Delete room</a>
                                             </div>
                                         </div>
                                     </div>
@@ -77,31 +76,16 @@
                         }
                         $conn->close();
                     ?>
-                </div>
-                <!-- Modal -->     
-                <div class="modal fade" id="delete" tabindex="-1" role="dialog" aria-labelledby="deleteHotel" aria-hidden="true">
-                    <div class="modal-dialog" role="document">
-                        <div class="modal-content">
-                            <div class="modal-header">
-                                <h5 class="modal-title" id="deleteHotel">Delete hotel</h5>
-                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                                <span aria-hidden="true">&times;</span>
-                                </button>
-                            </div>
-                            <div class="modal-body">
-                                Are you sure you want to delete this room?
-                            </div>
-                            <div class="modal-footer">
-                                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                                <a href="#" class="btn btn-danger">Delete room</a>
-                            </div>
-                        </div>
-                    </div>
-                </div>           
+                </div>                           
             </div>
         </main>
         <?php
             include_once "footer.php";
         ?>
+        <script>
+            $(function () {
+                $('[data-toggle="tooltip"]').tooltip()
+            })
+        </script>
     </body>
 </html>

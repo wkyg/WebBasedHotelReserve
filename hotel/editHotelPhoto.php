@@ -39,19 +39,19 @@
                                                 <div class="col-lg">
                                                     <div class="form-group">
                                                         <h5 class="card-title">Main hotel image</h5>
-                                                        <input type="file" class="form-control-file" name="main-img" id="main-img" >
+                                                        <input type="file" class="form-control-file" name="main-img" id="main-img" required>
                                                     </div>
                                                 </div>
                                                 <div class="col-lg">
                                                     <div class="form-group">
                                                         <h5 class="card-title">Supporting hotel image</h5>
-                                                        <input type="file" class="form-control-file" name="hotel-img-1" id="hotel-img-1" >
+                                                        <input type="file" class="form-control-file" name="hotel-img-1" id="hotel-img-1" required>
                                                     </div>
                                                 </div>
                                                 <div class="col-lg">
                                                     <div class="form-group">
                                                         <h5 class="card-title">Supporting hotel image</h5>
-                                                        <input type="file" class="form-control-file" name="hotel-img-2" id="hotel-img-1" >
+                                                        <input type="file" class="form-control-file" name="hotel-img-2" id="hotel-img-1" required>
                                                     </div>
                                                 </div>                                                
                                             </div>
@@ -59,19 +59,19 @@
                                                 <div class="col-lg">
                                                     <div class="form-group">
                                                         <h5 class="card-title">Supporting hotel image</h5>
-                                                        <input type="file" class="form-control-file" name="hotel-img-3" id="hotel-img-1" >
+                                                        <input type="file" class="form-control-file" name="hotel-img-3" id="hotel-img-1" required>
                                                     </div>
                                                 </div>
                                                 <div class="col-lg">
                                                     <div class="form-group">
                                                         <h5 class="card-title">Supporting hotel image</h5>
-                                                        <input type="file" class="form-control-file" name="hotel-img-4" id="hotel-img-1" >
+                                                        <input type="file" class="form-control-file" name="hotel-img-4" id="hotel-img-1" required>
                                                     </div>
                                                 </div>
                                                 <div class="col-lg">
                                                     <div class="form-group">
                                                         <h5 class="card-title">Supporting hotel image</h5>
-                                                        <input type="file" class="form-control-file" name="hotel-img-5" id="hotel-img-1" >
+                                                        <input type="file" class="form-control-file" name="hotel-img-5" id="hotel-img-1" required>
                                                     </div>
                                                 </div>
                                             </div>

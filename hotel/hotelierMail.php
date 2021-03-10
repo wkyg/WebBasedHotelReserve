@@ -22,9 +22,9 @@
     echo $mail;
                                                 
     $hotelierMailChk = mail("$mail", "Boop! heads up", $cont, "From: hotelfypp@gmail.com"); //From: to be changed to user email
-    $userMailChk = mail("hotelfypp@gmail.com", "Thank you for your enquiry", "Thank you for your enquiry.We will get back to you soon", "From: $mail");
+    //$userMailChk = mail("hotelfypp@gmail.com", "Thank you for your enquiry", "Thank you for your enquiry.We will get back to you soon", "From: $mail");
 
-    if($hotelierMailChk && $userMailChk){
+    if($hotelierMailChk){
         echo "Thank you for your enquiry";
         header("Location: hotelierMailSuccess.php?hotel_id=$hotel_detail_id");
         exit();

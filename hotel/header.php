@@ -24,17 +24,7 @@
                         if($_SESSION["logged"] == TRUE && $_SESSION["accType"] == 1){?>
                             <li class="nav-item active">
                                 <a class="nav-link" href="profilePage.php">Hi, <?php echo $_SESSION["user"]; ?> <span class="sr-only">(current)</span></a>
-                            </li>
-                            <li class="nav-item dropdown">
-                                <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                MYR
-                                </a>
-                                <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                                    <a class="dropdown-item" href="#">SGD</a>
-                                    <a class="dropdown-item" href="#">THB</a>
-                                    <a class="dropdown-item" href="#">USD</a>
-                                </div>
-                            </li>
+                            </li>                            
                             <li class="nav-item">
                                 <a class="nav-link" href="about.php">About</a>
                             </li>
@@ -47,17 +37,7 @@
                         }else if($_SESSION["logged"] == TRUE && $_SESSION["accType"] == 2){?>
                             <li class="nav-item active">
                                 <a class="nav-link" href="profilePageHotelier.php">Hi, <?php echo $_SESSION["user"]; ?> <span class="sr-only">(current)</span></a>
-                            </li>
-                            <li class="nav-item dropdown">
-                                <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                MYR
-                                </a>
-                                <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                                    <a class="dropdown-item" href="#">SGD</a>
-                                    <a class="dropdown-item" href="#">THB</a>
-                                    <a class="dropdown-item" href="#">USD</a>
-                                </div>
-                            </li>
+                            </li>                            
                             <li class="nav-item">
                                 <a class="nav-link" href="about.php">About</a>
                             </li>
@@ -70,17 +50,7 @@
                         }else if($_SESSION["logged"] == TRUE && $_SESSION["accType"] == 0){?>
                             <li class="nav-item active">
                                 <a class="nav-link" href="profilePageAdmin.php">Hi, <?php echo $_SESSION["user"]; ?> <span class="sr-only">(current)</span></a>
-                            </li>
-                            <li class="nav-item dropdown">
-                                <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                MYR
-                                </a>
-                                <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                                    <a class="dropdown-item" href="#">SGD</a>
-                                    <a class="dropdown-item" href="#">THB</a>
-                                    <a class="dropdown-item" href="#">USD</a>
-                                </div>
-                            </li>
+                            </li>                            
                             <li class="nav-item">
                                 <a class="nav-link" href="about.php">About</a>
                             </li>
@@ -97,17 +67,7 @@
                             </li>
                             <li class="nav-item">
                                 <a class="nav-link" href="registerPage.php">Register</a>
-                            </li>
-                            <li class="nav-item dropdown">
-                                <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                MYR
-                                </a>
-                                <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                                    <a class="dropdown-item" href="#">SGD</a>
-                                    <a class="dropdown-item" href="#">THB</a>
-                                    <a class="dropdown-item" href="#">USD</a>
-                                </div>
-                            </li>
+                            </li>                            
                             <li class="nav-item">
                                 <a class="nav-link" href="about.php">About</a>
                             </li>

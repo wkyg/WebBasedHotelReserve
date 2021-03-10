@@ -247,7 +247,7 @@
                                                     <div class="form-group">
                                                         <h5 class="card-title">Hotel info</h5>
                                                         <input type="text" class="form-control" name="info" id="info" 
-                                                        placeholder="e.g background of the hotel, history of the hotel" value="<?php echo $hotel_info ?>" required>
+                                                        placeholder="e.g background of the hotel, history of the hotel" value="<?php echo $hotel_info ?>" size="200" required>
                                                     </div>
                                                 </div>
                                             </div>
@@ -284,7 +284,7 @@
                                                 <h5 class="card-title">Hotel detail</h5>
                                                 <input type="text" class="form-control" name="detail" id="detail" 
                                                 placeholder="Detail of your hotel e.g sector that you are proud of, speciality of your hotel" 
-                                                value="<?php echo $hotel_detail ?>" required>
+                                                value="<?php echo $hotel_detail ?>" size="200" required>
                                             </div>
                                             <div class="row">
                                                 <div class="col-lg">

@@ -59,13 +59,13 @@
                     
 
                     if(mysqli_query($conn, $sql)){
-                        echo "updated";
+                        //echo "updated";
                         if(mysqli_query($conn, $sql2)){
-                            echo "deleted";
+                            //echo "deleted";
                             foreach($amenities as $amen){
                                 $sql3 = "INSERT INTO HOTEL_AMENITIES (HOTEL_AMENITIES_ID, HOTEL_ID, AMENITIES_ID) VALUES ('', '$hotel_id', '$amen')";
                                 if(mysqli_query($conn, $sql3)){
-                                    echo "inserted";
+                                    //echo "inserted";
                                     $flag = TRUE;
                                 }else{
                                     echo "fail";

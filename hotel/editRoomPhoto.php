@@ -30,7 +30,7 @@
                     <div class="card-body">
                         <div class="row">
                             <div class="col-lg">
-                                <form action="editHotelPhotoConfirm.php?room_id=<?=$room_id?>" method="POST" enctype="multipart/form-data">
+                                <form action="editRoomPhotoConfirm.php?room_id=<?=$room_id?>" method="POST" enctype="multipart/form-data">
                                     <div class="card mb-3 bg-light">
                                         <div class="card-body">
                                             <div class="row">

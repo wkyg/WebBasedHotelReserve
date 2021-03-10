@@ -164,7 +164,8 @@
                                                         <p class="card-text">Status: <b><?php echo $status; ?></b></p>
                                                         <?php
                                                             if($status != "CHECKED_OUT"){?>
-                                                                <button type="button" class="btn btn-danger" data-toggle="modal" data-target="#cancelBook">Cancel booking</button><?php
+                                                                <a href="cancelBookMail.php?book_id=<?=$book_id?>&room_id=<?=$room_id?>" class="btn btn-danger" data-toggle="tooltip" data-placement="right" 
+                                                                title="Are you sure you want to cancel?">Cancel booking</a><?php
                                                             }else{?>
                                                                 <a href="feedback.php?hotel_id=<?=$hotel_id?>" class="btn btn-success">Rate & comment</a><?php
                                                             }

@@ -20,7 +20,7 @@
     //echo $cryptPass;
     
     if($conn){
-        $sql = "INSERT INTO HOTELIER (HOTELIER_ID, HOTELIER_NAME, HOTELIER_PASS, HOTELIER_EMAIL, ACC_TYPE, ACC_STAT, ADMIN_ID) VALUES ('', '$user', '$cryptPass', '$mail', '2', '0', '1')";
+        $sql = "INSERT INTO HOTELIER (HOTELIER_ID, HOTELIER_NAME, HOTELIER_PASS, HOTELIER_EMAIL, ACC_TYPE, ACC_STAT, BLACKLIST_REASON, ADMIN_ID) VALUES ('', '$user', '$cryptPass', '$mail', '2', '0', null, '2')";
         $sql_2 = "SELECT HOTELIER_NAME, HOTELIER_EMAIL FROM HOTELIER";
         $result = $conn->query($sql_2);
 
@@ -47,7 +47,7 @@
         if($bool == true){
             if(mysqli_query($conn, $sql)){
                 echo "Register success". "</br>";
-                //$adminMailChk = mail("hotelfypp@gmail.com", "User_Enquiry", $cont, "From: hotelfypp@gmail.com");
+                $adminMailChk = mail("hotelfypp@gmail.com", "User_Enquiry", $cont, "From: hotelfypp@gmail.com");
                 $custMailChk = mail($mail, "Thank you for your registration", "Registered", "From: hotelfypp@gmail.com");
                 if($custMailChk){
                     header("Location: registerSuccess.php");

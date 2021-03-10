@@ -33,15 +33,15 @@
 
             $link = "http://localhost/WebBasedHotelReserve/hotel/confirmBook.php?room_id=$room_id&hotel_id=$hotel_id&pay_method=$pay_method&user_id=$user_id&check_in=$check_in&check_out=$check_out";
 
-            echo $mail;            
+            //echo $mail;            
 
-            //$mailChk = mail($u_email, "Thank you for your booking", "Please follow this link in order to complete your booking '$link'", "From: hotelfypp@gmail.com");
+            $mailChk = mail($mail, "Thank you for your booking", "Please follow this link in order to complete your booking '$link'", "From: hotelfypp@gmail.com");
 
-            //if($mailChk){
+            if($mailChk){
                 echo '<script>alert("Mail successfully send")</script>'; 
-            //}else{
+            }else{
                 echo '<script>alert("Mail failed to send")</script>'; 
-            //}
+            }
         ?>
         <main class="container pt-5 mt-5">
             <div class="jumbotron">

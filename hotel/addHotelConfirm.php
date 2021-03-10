@@ -49,17 +49,17 @@
                 $sub_image_5 = $_FILES['hotel-img-5']['tmp_name'];
                 $sub_image_5 = base64_encode(file_get_contents(addslashes($sub_image_5)));    
 
-                echo $hotel_name."</br>";
-                echo $hotel_star."</br>";
-                echo $hotel_loc."</br>";
-                echo $hotel_des."</br>";
-                echo $hotel_info."</br>";
-                echo $check_in."</br>";
-                echo $check_out."</br>";
-                echo $hotel_price."</br>";
-                echo $hotel_detail."</br>";
-                echo $hotel_address."</br>";
-                echo $hotel_contact."</br>";      
+                //echo $hotel_name."</br>";
+                //echo $hotel_star."</br>";
+                //echo $hotel_loc."</br>";
+                //echo $hotel_des."</br>";
+                //echo $hotel_info."</br>";
+                //echo $check_in."</br>";
+                //echo $check_out."</br>";
+                //echo $hotel_price."</br>";
+                //echo $hotel_detail."</br>";
+                //echo $hotel_address."</br>";
+                //echo $hotel_contact."</br>";      
 
                 $conn = mysqli_connect("localhost", "root", "", "hotel");
                 
@@ -72,7 +72,7 @@
                     $sql2 = "SELECT * FROM HOTEL WHERE HOTEL_NAME='$hotel_name' AND ADDRESS='$hotel_address'";        
 
                     if(mysqli_query($conn, $sql)){
-                        echo "insert_1 success";
+                        //echo "insert_1 success";
                         $result = $conn->query($sql2);
                         while($row = $result->fetch_assoc()){
                             $hotel_id = $row["HOTEL_ID"];
@@ -80,22 +80,22 @@
                         $sql3 = "INSERT INTO HOTEL_IMG (IMG_ID, IMG_1, IMG_2, IMG_3, IMG_4, IMG_5, HOTEL_ID) VALUES 
                         ('', '$sub_image_1', '$sub_image_2', '$sub_image_3', '$sub_image_4', '$sub_image_5', '$hotel_id')";
                         if(mysqli_query($conn, $sql3)){
-                            echo "insert_2 success";
+                            //echo "insert_2 success";
                             foreach($amenities as $amen){
                                 $sql4 = "INSERT INTO HOTEL_AMENITIES (HOTEL_AMENITIES_ID, HOTEL_ID, AMENITIES_ID) VALUES
                                 ('', '$hotel_id', '$amen')";
                                 if(mysqli_query($conn, $sql4)){
-                                    echo "insert_3 success";
+                                    //echo "insert_3 success";
                                     $flag = TRUE;
                                 }else{
-                                    echo "fail_3";
+                                    //echo "fail_3";
                                 }                    
                             } 
                         }else{
-                            echo "fail_2";
+                            //echo "fail_2";
                         }
                     }else{
-                        echo "fail_1";
+                        //echo "fail_1";
                     }
 
                     if ($flag == TRUE){?>

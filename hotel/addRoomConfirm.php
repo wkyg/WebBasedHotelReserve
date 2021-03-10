@@ -41,7 +41,7 @@
                     ('', '$room_type', '$room_number', '$room_avai', '$room_price', '$room_img', '$tmp_hot_id')";
 
                     if(mysqli_query($conn, $sql)){
-                        echo "inserted";
+                        //echo "inserted";
                         $flag = TRUE;
                     }else{
                         echo "failed";

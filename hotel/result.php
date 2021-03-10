@@ -72,31 +72,7 @@
                                                     </div>
                                                 </div>
                                             </div>
-                                        </li>
-                                        <li><hr class="dropdown-divider"></li>
-                                        <li>
-                                            <div class="col-sm">
-                                                <h5>Personality & Mood</h5>
-                                            </div>
-                                            <div class="col-sm pb-3">
-                                                <button type="button" class="btn btn-outline-primary">Primary</button>
-                                                <button type="button" class="btn btn-outline-primary">Primary</button>
-                                                <button type="button" class="btn btn-outline-primary">Primary</button>
-                                                <button type="button" class="btn btn-outline-primary">Primary</button>
-                                            </div>
-                                            <div class="col-sm pb-3">
-                                                <button type="button" class="btn btn-outline-primary">Primary</button>
-                                                <button type="button" class="btn btn-outline-primary">Primary</button>
-                                                <button type="button" class="btn btn-outline-primary">Primary</button>
-                                                <button type="button" class="btn btn-outline-primary">Primary</button>
-                                            </div>
-                                            <div class="col-sm">
-                                                <button type="button" class="btn btn-outline-primary">Primary</button>
-                                                <button type="button" class="btn btn-outline-primary">Primary</button>
-                                                <button type="button" class="btn btn-outline-primary">Primary</button>
-                                                <button type="button" class="btn btn-outline-primary">Primary</button>
-                                            </div>
-                                        </li>
+                                        </li>                                        
                                     </ul>
                                     <div class="btn-group" role="group" aria-label="Basic example">
                                         <button type="submit" class="btn btn-light btn-lg rounded-0">

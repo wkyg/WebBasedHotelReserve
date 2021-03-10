@@ -15,23 +15,44 @@
     <body>
         <main class="container">
             <?php
-                $room_id = $_GET["room_id"];
+                $hotel_id = $_GET["hotel_id"];
 
                 $flag = FALSE;
 
-                $room_img = $_FILES['room-img']['tmp_name'];
-                $room_img = base64_encode(file_get_contents(addslashes($room_img)));
+                $main_img = $_FILES['main-img']['tmp_name'];
+                $main_img = base64_encode(file_get_contents(addslashes($main_img)));
+
+                $sub_img_1 = $_FILES['hotel-img-1']['tmp_name'];
+                $sub_img_1 = base64_encode(file_get_contents(addslashes($sub_img_1)));
+
+                $sub_img_2 = $_FILES['hotel-img-2']['tmp_name'];
+                $sub_img_2 = base64_encode(file_get_contents(addslashes($sub_img_2)));
+
+                $sub_img_3 = $_FILES['hotel-img-3']['tmp_name'];
+                $sub_img_3 = base64_encode(file_get_contents(addslashes($sub_img_3)));
+
+                $sub_img_4 = $_FILES['hotel-img-4']['tmp_name'];
+                $sub_img_4 = base64_encode(file_get_contents(addslashes($sub_img_4)));
+
+                $sub_img_5 = $_FILES['hotel-img-5']['tmp_name'];
+                $sub_img_5 = base64_encode(file_get_contents(addslashes($sub_img_5)));
 
                 //echo $main_image.$sub_image_1.$sub_image_2.$sub_image_3.$sub_image_4.$sub_image_5;
 
                 $conn = mysqli_connect("localhost", "root", "", "hotel");
 
                 if($conn){
-                    $sql = "UPDATE ROOM SET ROOM_IMG='$room_img' WHERE ROOM_ID='$room_id'";                    
+                    $sql = "UPDATE HOTEL SET HOTEL_IMG='$main_img' WHERE HOTEL_ID='$hotel_id'";    
+                    $sql2 = "UPDATE HOTEL_IMG SET IMG_1='$sub_img_1', IMG_2='$sub_img_2', IMG_3='$sub_img_3', 
+                    IMG_4='$sub_img_4', IMG_5='$sub_img_5' where HOTEL_ID = '$hotel_id'";
 
                     if(mysqli_query($conn, $sql)){
-                        echo "updated_1";      
-                        $flag = TRUE;                  
+                        //echo "updated_1";      
+                        if(mysqli_query($conn, $sql2)){
+                            $flag = TRUE; 
+                        }else{
+                            echo "fail_2";
+                        }                 
                     }else{
                         echo "fail_1";
                     }

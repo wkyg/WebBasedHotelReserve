@@ -38,7 +38,7 @@
                     $sql = "UPDATE ROOM SET ROOM_TYPE='$room_type', ROOM_NUMBER='$room_number', ROOM_AVAI='$room_avai', ROOM_PRICE='$room_price' WHERE ROOM_ID = '$room_id'";
 
                     if(mysqli_query($conn, $sql)){
-                        echo "updated";
+                        //echo "updated";
                         $flag = TRUE;
                     }else{
                         echo "updated";

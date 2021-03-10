@@ -27,16 +27,22 @@
                     $sql = "DELETE FROM HOTEL WHERE HOTEL_ID = '$hotel_id'";
                     $sql2 = "DELETE FROM HOTEL_IMG WHERE HOTEL_ID = '$hotel_id'";
                     $sql3 = "DELETE FROM HOTEL_AMENITIES WHERE HOTEL_ID = '$hotel_id'";
+                    $sql4 = "DELETE FROM ROOM WHERE HOTEL_ID = '$hotel_id'";
 
                     if(mysqli_query($conn, $sql3)){
-                        echo "deleted_1";
+                        //echo "deleted_1";
                         if(mysqli_query($conn, $sql2)){
-                            echo "deleted_2";
-                            if(mysqli_query($conn, $sql)){
-                                echo "deleted_3";
-                                $flag = TRUE;
+                            //echo "deleted_2";
+                            if(mysqli_query($conn, $sql4)){
+
+                                if(mysqli_query($conn, $sql)){
+                                    //echo "deleted_3";
+                                    $flag = TRUE;
+                                }else{
+                                    echo "fail_3";
+                                }
                             }else{
-                                echo "fail_3";
+                                echo "fail_4";
                             }
                         }else{
                             echo "fail_2";
