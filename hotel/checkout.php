@@ -135,7 +135,7 @@
                                             <form action="confirmPay.php?room_num=<?=$room_num?>&room_id=<?=$room_id?>&hotel_id=<?=$hotel_id?>&pay_method=<?=$pay_method?>&check_in=<?=$check_in?>&check_out=<?=$check_out?>" method=POST>
                                                 <div class="form-group">
                                                     <h3 class="card-title">Entered details</h3>
-                                                    <h5 class="card-title">Full name</h5>
+                                                    <h5 class="card-title">Full namee</h5>
                                                     <div class="row">
                                                         <div class="col-lg">
                                                             <input type="text" class="form-control" id="formGroupExampleInput" placeholder="First name" value="<?php echo $fname ?>" readonly>  
